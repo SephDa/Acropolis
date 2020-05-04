@@ -1,0 +1,27 @@
+{
+  "name": "apoco",
+  "version": "0.0.1",
+  "description": "post-apocalyptic farm simulator game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SephDa/apoco.git"
+  },
+  "keywords": [
+    "apocalyptic",
+    "farm",
+    "simulator"
+  ],
+  "author": "Samantha Henson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SephDa/apoco/issues"
+  },
+  "homepage": "https://github.com/SephDa/apoco#readme",
+  "dependencies": {
+    "typescript": "3.8.3"
+  }
+}
