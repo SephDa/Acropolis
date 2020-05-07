@@ -1,0 +1,23 @@
+/**********************************************
+*** GENERAL
+**********************************************/
+* {
+    font-family: 'MyWebFont';
+}
+body {
+    background-color: dimgrey;
+    background-image: url(Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.blurb {
+
+    background-color: hsl(32, 11%, 37%);
+    font-size: 36px;
+       
+}
+
+@font-face {
+    font-family: 'MyWebFont';
+    src:  url(TheDeadAreComing.ttf);
+  }
