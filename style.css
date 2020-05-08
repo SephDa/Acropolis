@@ -1,23 +1,103 @@
 /**********************************************
 *** GENERAL
 **********************************************/
-* {
-    font-family: 'MyWebFont';
-}
-body {
-    background-color: dimgrey;
-    background-image: url(Background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.blurb {
-
-    background-color: hsl(32, 11%, 37%);
-    font-size: 36px;
-       
-}
-
 @font-face {
     font-family: 'MyWebFont';
     src:  url(TheDeadAreComing.ttf);
   }
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+* {
+    font-family: 'MyWebFont';
+}
+body {
+    background-color: hsl(32, 11%, 37%);
+    background-image: url(Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    margin: 0;
+}
+.blurb {
+
+    background-color: hsl(32, 11%, 37%,0.5);
+    padding: 20px;
+    margin: 10px;
+    height: 200px;
+    width: auto;
+    overflow: hidden;
+        
+}
+
+#welcomeAndTag {
+    width: 75%;
+    float: left;
+    padding-left: 5%;
+    padding-top: 5%;
+}
+
+
+#welcome {
+    font-size: 42px;
+}
+
+#tagLine {
+    margin-top: 10px;
+    font-size: 30px;
+    
+}
+
+#buttonHolder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+button {
+    width: 30%;
+    display: block;
+    float: left;
+}
+
+#gameArea {
+    font-size: 30px;
+    height : 600px;
+    width: auto;
+    background-color:hsl(32, 11%, 37%,0.5);
+    margin: 10px;
+    padding: 20px;
+}
+
+#bottomBlock {
+    height: 200px;
+    background-color: hsl(35, 14%, 30%,0.5);
+    margin: 10px;
+    padding: 20px;
+}
+
+#playerStats {
+    font-size: 30px;
+    width: 80%;
+    float: left; 
+    
+}
+
+#socials {
+    
+}
+
+.smallBoxes {
+    background-color: hsl(35, 14%, 30%,0.5);
+    width: 20%;
+    height: 100%;
+    overflow: hidden;
+}
+
+div, html, body {
+    box-sizing: border-box;
+}
