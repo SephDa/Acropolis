@@ -1,6 +1,8 @@
 /**********************************************
 *** GENERAL
 **********************************************/
+
+/*Impacts Whole Page*/
 @font-face {
     font-family: 'MyWebFont';
     src:  url(TheDeadAreComing.ttf);
@@ -9,37 +11,25 @@
 html {
     height: 100%;
     overflow: hidden;
+    
 }
 
 * {
     font-family: 'MyWebFont';
 }
-body {
-    background-color: hsl(32, 11%, 37%);
-    background-image: url(Background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-    margin: 0;
-}
-.blurb {
 
-    background-color: hsl(32, 11%, 37%,0.5);
-    padding: 20px;
-    margin: 10px;
-    height: 200px;
-    width: auto;
-    overflow: hidden;
-        
+div, html, body, footer {
+    box-sizing: border-box;
 }
+
+/*Impacts Welcome Heading and Subheading*/
 
 #welcomeAndTag {
     width: 75%;
     float: left;
-    padding-left: 5%;
-    padding-top: 5%;
+    padding-left: 1%;
+    padding-top: 1%;
 }
-
 
 #welcome {
     font-size: 42px;
@@ -48,48 +38,96 @@ body {
 #tagLine {
     margin-top: 10px;
     font-size: 30px;
-    
 }
+
+/*Holds the Menu Buttons*/
 
 #buttonHolder {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     
 }
 
+/*Impacts All Buttons on Page*/
+
 button {
-    width: 30%;
+    width: 50%;
     display: block;
     float: left;
+    margin: 5%;
+    border-radius: 5px;
+    transition-duration: 0.1s;
+}
+
+button:hover {
+    background-color: tan;
+    color: white;
+    box-shadow: 10px 10px 5px rgba(0,0,0,0.24);
+}
+
+/*Impacts Body Elements*/
+
+#gradient {
+    height: 100%;
+    background-image: linear-gradient(to bottom right, rgba(255, 254, 255, 0.5) , rgba(0, 0, 0, 0.8));
+    margin: 0;
+}
+
+body {    
+    background-image: url(Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    margin: 0;
+}
+
+.cover {
+    background-color: hsl(32, 11%, 37%, 0.5);
+    margin-bottom: 1%;
+}
+
+#blurb {
+    padding: 20px;
+    height: 200px;
+    width: auto;
+    overflow: hidden; 
 }
 
 #gameArea {
     font-size: 30px;
     height : 600px;
     width: auto;
-    background-color:hsl(32, 11%, 37%,0.5);
-    margin: 10px;
     padding: 20px;
 }
 
-#bottomBlock {
-    height: 200px;
-    background-color: hsl(35, 14%, 30%,0.5);
-    margin: 10px;
+/* Impacts Stats*/
+
+#statsBlock {
+    height: auto;
     padding: 20px;
 }
 
 #playerStats {
-    font-size: 30px;
-    width: 80%;
-    float: left; 
-    
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+       
 }
 
-#socials {
-    
+#statHeading {
+    border-style: none;
 }
+
+.stat {
+    width: 25%;
+    margin: 1%;
+    border-style: ridge;
+    border-color:hsl(35, 14%, 30%) ;
+}
+
+/*Impacts small brown boxes in Blurb and Footer*/
 
 .smallBoxes {
     background-color: hsl(35, 14%, 30%,0.5);
@@ -98,6 +136,38 @@ button {
     overflow: hidden;
 }
 
-div, html, body {
-    box-sizing: border-box;
+footer {
+    height: 200px;
+    padding: 1%;
+
+}
+
+#authors {
+    width:75%;
+    float: left;
+    padding: 20px;
+}
+
+#socials {
+    width:25%;
+    float: left;
+    padding: 20px;
+}
+
+/* Styling the links on the page */
+
+a:link {
+    color: hsl(51, 28%, 68%);
+}
+
+a:hover {
+    color: hsl(32, 54%, 50%);
+}
+
+a:active {
+    color: hsl(19, 73%, 45%);
+}
+
+a:visited {
+    color: hsl(19, 45%, 38%);
 }
