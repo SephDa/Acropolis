@@ -10,7 +10,6 @@
 
 html {
     height: 100%;
-    overflow: hidden;
     
 }
 
@@ -25,6 +24,7 @@ div, html, body, footer {
 /*Impacts Welcome Heading and Subheading*/
 
 #welcomeAndTag {
+    height: 100%;
     width: 75%;
     float: left;
     padding-left: 1%;
@@ -85,35 +85,45 @@ body {
 
 .cover {
     background-color: hsl(32, 11%, 37%, 0.5);
-    margin-bottom: 1%;
+    margin-bottom: 0.5%;
 }
+
+.cover.blurb {
+    height: 15%;
+}
+
+.cover.game {
+    height: 60%;
+}
+
+.cover.stats {
+    height: 10%;
+}
+
 
 #blurb {
     padding: 20px;
-    height: 200px;
     width: auto;
-    overflow: hidden; 
+    overflow: auto;
+    height: 100%;
 }
 
 #gameArea {
     font-size: 30px;
-    height : 600px;
     width: auto;
     padding: 20px;
+    
 }
 
 /* Impacts Stats*/
 
 #statsBlock {
-    height: auto;
     padding: 20px;
 }
 
 #playerStats {
     font-size: 20px;
-    display: flex;
-    flex-direction: column;
-       
+    display: inline-flex;  
 }
 
 #statHeading {
@@ -123,6 +133,7 @@ body {
 .stat {
     width: 25%;
     margin: 1%;
+    padding: 1%;
     border-style: ridge;
     border-color:hsl(35, 14%, 30%) ;
 }
@@ -137,7 +148,7 @@ body {
 }
 
 footer {
-    height: 200px;
+    height: 10%;
     padding: 1%;
 
 }
@@ -145,13 +156,20 @@ footer {
 #authors {
     width:75%;
     float: left;
-    padding: 20px;
+    padding: 10px;
 }
 
 #socials {
     width:25%;
     float: left;
-    padding: 20px;
+    padding: 10px;
+}
+
+.fab {
+    font-size: 40px;
+}
+.fas {
+    font-size: 30px;
 }
 
 /* Styling the links on the page */
