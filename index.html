@@ -4,77 +4,84 @@
         <meta charset="UTF-8">
         <link type="text/css" rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/2943d8408b.js" crossorigin="anonymous"></script>
+        
         <title>Apoco Game</title>
     </head>
 
     <body>
         <div id ="gradient">
-            <div class = "cover blurb">
-                <div id = "blurb">
-                    <div id = "welcomeAndTag">
-                        <div id = "welcome">
-                        Welcome to Apoco
+            <div id = "menu">
+                Welcome to Apoco!
+                <br><button class = 'brandNewGame' id = 'brandNewGame'>New Game</button>
+            </div>
+            <div id = "menuToggle">
+                <div class = "cover blurb">
+                    <div id = "blurb">
+                        <div id = "welcomeAndTag">
+                            <div id = "welcome">
+                            Welcome to Apoco
+                            </div>
+
+                            <div id = "tagLine">
+                            Where post-apocalptic fun meets farming
+                            </div>
                         </div>
 
-                        <div id = "tagLine">
-                        Where post-apocalptic fun meets farming
+                        <div id = "buttonHolder" class = smallBoxes>
+                            <button>New Game</button>
+                            <button id = "eg button">example button</button>
                         </div>
                     </div>
+                </div>
 
-                    <div id = "buttonHolder" class = smallBoxes>
-                        <button>New Game</button>
-                        <button>example button</button>
+                <div class = "cover game">
+                    <div id = gameArea>
+                        <button>this is a button</button>
+
                     </div>
                 </div>
-            </div>
 
-            <div class = "cover game">
-                <div id = gameArea>
-                    This is the game area
+                <div class = "cover stats">
+                    <div id= 'statsBlock'>
+                        <div id = playerStats>
 
+                            <div id = "statHeading" class = stat>
+                                Player Stats: 
+                            </div>
+
+                            <div class = stat>
+                            Seeds Planted: 0
+                            </div>
+
+                            <div class = stat>
+                            Fruit Harvested: 0
+                            </div>
+
+                            <div class = stat>
+                            Total Money: 0
+                            </div>
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class = "cover stats">
-                <div id= 'statsBlock'>
-                    <div id = playerStats>
-
-                        <div id = "statHeading" class = stat>
-                            Player Stats: 
-                        </div>
-
-                        <div class = stat>
-                        Seeds Planted:
-                        </div>
-
-                        <div class = stat>
-                        Fruit Harvested:
-                        </div>
-
-                        <div class = stat>
-                        Total Money:
-                        </div>
+                
+                <footer class = "cover">
+                    <div id = "authors">
+                        A game by: Samantha and Mathew Henson 
+                        <br>The ultimate brother-sister duo
+                        <br>
+                        <br>Have a comment or question? 
+                        <br> Email: <a id="email" href=mailto:samantha.j.h@live.com>samantha.j.h@live.com</a>
                         
                     </div>
-                </div>
+                    <div id = "socials" class = smallBoxes>
+                        Connect with us!
+                        <br>
+                        <a href=https://github.com/SephDa/apoco><i class="fab fa-github"></i></a>
+                        <a href=https://twitter.com/S_J_Henson><i class="fab fa-twitter"></i></a>
+                    </div>
+                </footer>
             </div>
-            
-            <footer class = "cover">
-                <div id = "authors">
-                    A game by: Samantha and Mathew Henson 
-                    <br>The ultimate brother-sister duo
-                    <br>
-                    <br>Have a comment or question? 
-                    <br> Email: <a id="email" href=mailto:samantha.j.h@live.com>samantha.j.h@live.com</a>
-                    
-                </div>
-                <div id = "socials" class = smallBoxes>
-                    Connect with us!
-                    <br>
-                    <a href=https://github.com/SephDa/apoco><i class="fab fa-github"></i></a>
-                    <a href=https://twitter.com/S_J_Henson><i class="fab fa-twitter"></i></a>
-                </div>
-            </footer>
-        </div>   
+            <script src="apoco.js"></script>   
     </body>
 </html>
