@@ -68,8 +68,22 @@ button:hover {
 }
 
 button.brandNewGame{
+    background-image: url(plank.jpg);
     background-color: transparent;
+    color: hsl(45, 39%, 68%) ;
+    border-width: 0.0px;
+    border-color:blanchedalmond ;
+    height: 20%;
+    font-size: 35px;
+    transition: transform 5s;
 }
+
+button.brandNewGame:hover {
+    color:  hsl(37, 59%, 60%);
+    transform: rotate(360deg);
+}
+
+
 
 /*Impacts Body Elements*/
 
@@ -86,14 +100,16 @@ body {
     height: 100%;
     margin: 0;
 }
+/*Welcome Page */
 
 #menuToggle {
     height: 100%;
-    background-image: url(Background.jpg);
+    display: none;
 }
 
-#menu {
-    display: none;
+#menuBox {
+    background-image: linear-gradient(to bottom right, rgba(214, 195, 177, 0.5) , rgba(0, 0, 0, 0.8));
+    display: block;
     height: 20%;
     width: 50%;
     position: relative;
@@ -103,12 +119,20 @@ body {
     font-size: 45px;
     border-color:hsl(35, 14%, 30%);
     border-style: double;
+    animation-name: slide;
+    animation-duration: 10s;
+}
+
+@keyframes slide {
+    from {opacity: 0.01; top: 0%;}
+    to {opacity: 1; top:25%;}
 }
 
 #brandNewGame {
     float: none;
     display: inline-block;
 }
+
 .cover {
     background-color: hsl(32, 11%, 37%, 0.5);
     margin-bottom: 0.5%;
@@ -211,7 +235,7 @@ a:link {
 }
 
 a:hover {
-    color: hsl(32, 54%, 50%);
+    color: hsl(37, 59%, 60%);
 }
 
 a:active {
