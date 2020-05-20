@@ -67,7 +67,7 @@ button:hover {
     box-shadow: 10px 10px 5px rgba(0,0,0,0.24);
 }
 
-button.brandNewGame{
+button.menuButton{
     background-image: url(plank.jpg);
     background-color: transparent;
     color: hsl(45, 39%, 68%) ;
@@ -75,14 +75,22 @@ button.brandNewGame{
     border-color:blanchedalmond ;
     height: 20%;
     font-size: 35px;
-    transition: transform 5s;
+    transition: transform 1s;
+    float: none;
+    display: inline-block;
+    margin: 2%;
 }
 
-button.brandNewGame:hover {
+button.menuButton:hover {
     color:  hsl(37, 59%, 60%);
-    transform: rotate(360deg);
+    transform: scale(1.2);
 }
 
+button.menuButton:active {
+    border-color:blanchedalmond;
+    color:  hsl(0, 53%, 30%);
+    text-decoration: line-through ;
+}
 
 
 /*Impacts Body Elements*/
@@ -120,7 +128,7 @@ body {
     border-color:hsl(35, 14%, 30%);
     border-style: double;
     animation-name: slide;
-    animation-duration: 10s;
+    animation-duration: 5s;
 }
 
 @keyframes slide {
@@ -161,14 +169,33 @@ body {
 #gameArea {
     font-size: 30px;
     width: auto;
-    padding: 20px;
-    border-color:hsl(35, 14%, 30%);
-    border-style: groove;
     height: 100%;
+    display: flex;
 }
 
-#gameArea button{
-    color:black;
+#centralGameArea {
+    margin: 2%;
+    border-color: hsl(35, 14%, 30%);
+    border-style: ridge;
+    width: 98%;
+}
+
+#farms {
+    padding-top: 3%;
+    padding-bottom: 2.5%;
+    height:100%;
+}
+
+.farmRows {
+    display: flex;
+}
+
+.farmPlot {
+    display: block;
+    background-image: url(dirt.jpg);
+    height: 100px;
+    width: 100px;
+    margin: 1%;
 }
 
 /* Impacts Stats*/

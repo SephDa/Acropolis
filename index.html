@@ -12,7 +12,8 @@
         <div id ="gradient">
             <div id = "menuBox">
                 Welcome to Apoco!
-                <br><button class = 'brandNewGame' id = 'brandNewGame'>New Game</button>
+                <button class = "menuButton" id = "brandNewGame">New Game</button>
+                <button class = "menuButton" id = "loadGame">Load Game</button>
             </div>
 
             <div id = "menuToggle">
@@ -29,37 +30,101 @@
                             </div>
                         </div>
 
-                        <div id = "buttonHolder" class = smallBoxes>
-                            <button>New Game</button>
-                            <button id = "eg button">example button</button>
+                        <div id = "buttonHolder" class = "smallBoxes">
+                            <button id = "backToMenuButton">Menu</button>
+                            <button id = "saveButton">Save</button>
                         </div>
                     </div>
                 </div>
 
                 <div class = "cover game">
-                    <div id = gameArea>
+                    <div id = "gameArea">
                         
+                        <div id= "centralGameArea">
+                            <div id = "farms">
+                                <div class = "farmRows" id="topRowFarm">
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                </div>
+                                <div class = "farmRows" id="secondRowFarm">
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                </div>
+                                <div class = "farmRows" id = "thirdRowFarm">
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                </div>
+                                <div class = "farmRows" id = "fourthRowFarm">
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                </div>
+                                <div class = "farmRows" id = "fifthRowFarm">
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                    <div class = "farmPlot"></div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
 
                 <div class = "cover stats">
-                    <div id= 'statsBlock'>
+                    <div id= "statsBlock">
                         <div id = playerStats>
 
                             <div id = "statHeading" class = stat>
                                 Player Stats: 
                             </div>
 
-                            <div class = stat>
+                            <div class = "stat">
                             Seeds Planted: 0
                             </div>
 
-                            <div class = stat>
+                            <div class = "stat">
                             Fruit Harvested: 0
                             </div>
 
-                            <div class = stat>
+                            <div class = "stat">
                             Total Money: 0
                             </div>
                                 
@@ -76,7 +141,7 @@
                         <br> Email: <a id="email" href=mailto:samantha.j.h@live.com>samantha.j.h@live.com</a>
                             
                     </div>
-                    <div id = "socials" class = smallBoxes>
+                    <div id = "socials" class = "smallBoxes">
                         Connect with us!
                         <br>
                         <a href=https://github.com/SephDa/apoco><i class="fab fa-github"></i></a>
