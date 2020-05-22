@@ -23,13 +23,17 @@ document.getElementById('saveButton').addEventListener('click', function () {
     window.alert("Your game has been saved! Hooray!");
 }) 
 
-/*
+
 var farmPlot = document.querySelectorAll('.farmPlot');
 
-function farmClick() {
+function setUpListeners() {
     for (var i = 0; i < farmPlot.length; i++){
-        window.alert("Nothing has been planted here, yet! Better get cracking!");}
+        farmPlot[i].addEventListener('click', function onFarmClick() {
+            window.alert("Nothing has been planted here, yet! Better get cracking!");
+        });
+    }
 }
 
-farmPlot.addEventListener('click',farmClick());
-*/
+
+
+setUpListeners();
