@@ -24,16 +24,43 @@ document.getElementById('saveButton').addEventListener('click', function () {
 }) 
 
 
-var farmPlot = document.querySelectorAll('.farmPlot');
+function onFarmClick() {
+    window.alert("Nothing has been planted here, yet! Better get cracking!");
+};
 
-function setUpListeners() {
-    for (var i = 0; i < farmPlot.length; i++){
-        farmPlot[i].addEventListener('click', function onFarmClick() {
-            window.alert("Nothing has been planted here, yet! Better get cracking!");
-        });
+function getInput() {
+   
+    // Get the number of tiles value from the user
+    var inputElement = document.getElementById("inputOfPlots");
+    const amntTiles = inputElement.value;
+       
+    //Generate the number of divs based on the value above
+    for (var i = 0; i < amntTiles; i++) {
+        var farmPlot = document.createElement('div');
+        var parent = document.getElementById('farms');
+
+        // Add Child div to parent Farm div
+        parent.appendChild(farmPlot);
+
+        // Add class to newly created divs
+        farmPlot.classList.add('farmPlot');
+
+        // Run OnClick farmplot function
+        farmPlot.addEventListener('click', onFarmClick);
     }
 }
 
+function generateTiles(amntTiles) {
+    
+}
 
 
-setUpListeners();
+function main() {
+    
+    document.getElementById('brandNewGame').addEventListener('click', getInput);
+     
+}
+
+
+// Run the main functions of the page
+main();

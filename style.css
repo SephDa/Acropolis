@@ -118,7 +118,7 @@ body {
 #menuBox {
     background-image: linear-gradient(to bottom right, rgba(214, 195, 177, 0.5) , rgba(0, 0, 0, 0.8));
     display: block;
-    height: 20%;
+    height: auto;
     width: 50%;
     position: relative;
     text-align: center;
@@ -128,7 +128,12 @@ body {
     border-color:hsl(35, 14%, 30%);
     border-style: double;
     animation-name: slide;
-    animation-duration: 5s;
+    animation-duration: 2s;
+}
+
+p {
+    margin: 0;
+    font-size: 35px;
 }
 
 @keyframes slide {
@@ -139,6 +144,29 @@ body {
 #brandNewGame {
     float: none;
     display: inline-block;
+}
+
+
+input{
+    padding: 12px 20px;
+    width:75%;
+}
+
+select {
+    padding: 12px 20px;
+    width: 75%;
+}
+
+input:focus {
+    border: 3px solid hsl(32, 11%, 37%, 0.5);
+    background-color: hsl(51, 28%, 68%);
+  }
+
+.name {
+    display: inline-block;
+    text-align: left;
+    width: 49%;
+    font-size: 35px;
 }
 
 .cover {
@@ -187,12 +215,8 @@ body {
     overflow: hidden;
 }
 
-.farmRows {
-    display: flex;
-}
-
 .farmPlot {
-    display: block;
+    display: inline-block;
     background-image: url(dirt.jpg);
     height: 100px;
     width: 100px;
