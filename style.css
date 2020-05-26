@@ -8,6 +8,13 @@
     src:  url(TheDeadAreComing.ttf);
   }
 
+  @font-face {
+    font-family: 'Numerals';
+    src:  url(Numerals.ttf);
+    unicode-range: U+0030-0039;
+  }
+
+
 html {
     height: 100%;
     
@@ -146,15 +153,20 @@ p {
     display: inline-block;
 }
 
+.newGameStat {
+    display: inline-block;
+    text-align: left;
+    width: 48%;
+    font-size: 35px;
+    margin-right:1%;
+}
 
 input{
     padding: 12px 20px;
-    width:75%;
-}
-
-select {
-    padding: 12px 20px;
-    width: 75%;
+    box-sizing: border-box;
+    width:100%;
+    margin-right: 5px;
+    font-size: 25px;
 }
 
 input:focus {
@@ -162,11 +174,20 @@ input:focus {
     background-color: hsl(51, 28%, 68%);
   }
 
-.name {
-    display: inline-block;
-    text-align: left;
-    width: 49%;
-    font-size: 35px;
+select {
+    padding: 12px 20px;
+    width: 100%;
+    font-size: 25px;
+}
+
+select:focus {
+    border: 3px solid hsl(32, 11%, 37%, 0.5);
+    background-color: hsl(51, 28%, 68%);
+}
+
+.numerals {
+    font-family: Numerals;
+    font-weight: bold;
 }
 
 .cover {
