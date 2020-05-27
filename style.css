@@ -5,15 +5,8 @@
 /*Impacts Whole Page*/
 @font-face {
     font-family: 'MyWebFont';
-    src:  url(TheDeadAreComing.ttf);
+    src:  url(BottleShopFaded.ttf);
   }
-
-  @font-face {
-    font-family: 'Numerals';
-    src:  url(Numerals.ttf);
-    unicode-range: U+0030-0039;
-  }
-
 
 html {
     height: 100%;
@@ -230,8 +223,6 @@ select:focus {
 }
 
 #farms {
-    padding-top: 3%;
-    padding-bottom: 2.5%;
     height:100%;
     overflow: hidden;
 }
@@ -246,13 +237,17 @@ select:focus {
 
 /* Impacts Stats*/
 
+.statsCapture {
+    width: 48%;
+    display: inline-block;
+}
+
 #statsBlock {
     padding: 20px;
 }
 
 #playerStats {
     font-size: 20px;
-    display: inline-flex;  
 }
 
 #statHeading {
@@ -260,8 +255,8 @@ select:focus {
 }
 
 .stat {
-    width: 25%;
-    margin: 1%;
+    display: inline-block;
+    width: 15%;
     padding: 1%;
     border-style: ridge;
     border-color:hsl(35, 14%, 30%) ;

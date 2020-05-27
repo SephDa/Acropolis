@@ -5,7 +5,7 @@
         <link type="text/css" rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/2943d8408b.js" crossorigin="anonymous"></script>
         
-        <title>Apoco Game</title>
+        <title>Acropalis Game</title>
     </head>
 
     <body>
@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="newGameStat">
-                            <input id="inputOfPlots" placeholder="Enter no. of plots">
+                            <input type= "Number" id="inputOfPlots" placeholder="Enter no. of plots">
                         </div>
 
                         <div class="newGameStat">
@@ -36,7 +36,7 @@
 
                         <div class="newGameStat">
                             <select id="fruitType">
-                                <option disable="" selected="">Choose your crop</option>
+                                <option disable="" selected="" value="initial">Choose your crop</option>
                                 <option value="beetroot">Beetroot</option>
                                 <option value="carrot">Carrot</option>
                                 <option value="cabbage">Cabbage</option>
@@ -65,7 +65,7 @@
                         </div>
 
                         <div id = "buttonHolder" class = "smallBoxes">
-                            <button id = "backToMenuButton">Menu</button>
+                            <button id = "backToMenuButton">Back to Main Menu</button>
                             <button id = "saveButton">Save</button>
                         </div>
                     </div>
@@ -85,9 +85,9 @@
 
                 <div class = "cover stats">
                     <div id= "statsBlock">
-                        <div id = playerStats>
+                        <div id = playerStats class ="statsCapture">
 
-                            <div id = "statHeading" class = stat>
+                            <div id = "statHeading" class = "stat">
                                 Player Stats: 
                             </div>
 
@@ -103,6 +103,9 @@
                             Total Money: 0
                             </div>
                                 
+                        </div>
+                        <div id = "cropCapture" class ="statsCapture">
+                            Crop types available to plant:
                         </div>
                     </div>
                 </div>
