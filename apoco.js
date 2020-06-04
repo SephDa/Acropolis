@@ -1,10 +1,39 @@
+//OLD CODE
 
+// Get the number of tiles value from the user
+//var plotInputElement = document.getElementById("inputOfPlots");
+//amntTiles = plotInputElement.value;
 
+/*Check if user has entered no. of plots above 0
+if (amntTiles === "") {
+    window.alert("You need to enter a plot value!");
+    return;
+} else if (amntTiles <= 0) {
+    window.alert("You must enter a plot value more than 0!");
+    return;
+} else {
+    //Toggle Welcome Menu
+    toggleMenu(); 
+    addName();
 
+    //Generate the number of divs based on the value above
+    for (var i = 0; i < amntTiles; i++) {
+        var farmPlot = document.createElement('div');
+        var parent = document.getElementById('farms');
 
-document.getElementById('saveButton').addEventListener('click', function () {
+        // Add Child div to parent Farm div
+        parent.appendChild(farmPlot);
+
+        // Add class to newly created divs
+        farmPlot.classList.add('farmPlot');
+
+        // Run OnClick farmplot function
+        farmPlot.addEventListener('click', onFarmClick);
+    }*/
+
+/*document.getElementById('saveButton').addEventListener('click', function () {
     window.alert("Your game has been saved! Hooray!");
-}) 
+}) */
 
 
 function onFarmClick() {
@@ -12,9 +41,6 @@ function onFarmClick() {
 };
 
 function startGame() {
-    // Get the number of tiles value from the user
-    var plotInputElement = document.getElementById("inputOfPlots");
-    amntTiles = plotInputElement.value;    
 
     //Get the username
     var userName = document.getElementById("inputName");
@@ -35,36 +61,53 @@ function startGame() {
         return;
     }
 
-    //Check if user has entered no. of plots above 0
-    if (amntTiles === "") {
-        window.alert("You need to enter a plot value!");
-        return;
-    } else if (amntTiles <= 0) {
-        window.alert("You must enter a plot value more than 0!");
+    //Get difficulty type
+    var difficulty = document.getElementById('difficulty').value;
+
+    //Check if user has selected difficulty
+    if (difficulty === "initial") {
+        window.alert("You need to choose your difficulty.");
         return;
     } else {
+        
+        
         //Toggle Welcome Menu
         toggleMenu(); 
         addName();
 
-        //Generate the number of divs based on the value above
-        for (var i = 0; i < amntTiles; i++) {
-            var farmPlot = document.createElement('div');
-            var parent = document.getElementById('farms');
-
-            // Add Child div to parent Farm div
-            parent.appendChild(farmPlot);
-
-            // Add class to newly created divs
-            farmPlot.classList.add('farmPlot');
-
-            // Run OnClick farmplot function
-            farmPlot.addEventListener('click', onFarmClick);
+        //Create amount value based on difficulty level
+        switch (difficulty) {
+            case "easy":
+                var amntTiles = 25;
+                break;
+            case "medium":
+                var amntTiles = 50;
+                break;
+            case "hard":
+                var amntTiles = 75;
+                break;
         }
-    
 
-
+        //Generate the number of divs based on the value above
+        generateTiles(amntTiles);
     }   
+}
+
+//Generate the number of divs based on the difficulty value
+function generateTiles(value) {
+    for (var i = 0; i < value; i++) {
+        var farmPlot = document.createElement('div');
+        var parent = document.getElementById('farms');
+
+        // Add Child div to parent Farm div
+        parent.appendChild(farmPlot);
+
+        // Add class to newly created divs
+        farmPlot.classList.add('farmPlot');
+
+        // Run OnClick farmplot function
+        farmPlot.addEventListener('click', onFarmClick);
+    }
 }
 
 // Add user typed in name to welcome message
@@ -82,35 +125,23 @@ function clearAll() {
     document.getElementById("inputName").value = "";
 
     //Clear No of Plots entered
-    document.getElementById("inputOfPlots").value = "";
-    //amntTiles = 0;
+    document.getElementById("difficulty").value = "initial";
 
     //Clear Crop Type
     document.getElementById("fruitType").value = "initial";
 
     //Delete the divs
-    
     var parent = document.getElementById('farms');
-    //var list = document.querySelectorAll('.farmPlot');
+    var children = document.querySelectorAll('.farmPlot');
 
     // Remove Child farmplot divs from parent Farm div
-    //parent.querySelectorAll('*').forEach(n => n.remove());
-
-    //This was my try: my own logic
-
-    /*for (i = 0; i < list.length; i++) {
-        if (i.class === "farmPlot") {
-            parent.removeChild(list[i])
+    for (i = 0; i < children.length; i++) {
+        if (children[i].className === "farmPlot") {
+            parent.removeChild(children[i]);
         }
-    }*/
-
-    //Try 2 // found online, makes sense
-    var child = parent.lastElementChild;
-    while (child){
-        parent.removeChild(child);
-        child = parent.lastElementChild;
     }
 
+    toggleBackMenu();
 }
 
 function toggleMenu() {
@@ -123,14 +154,25 @@ function toggleBackMenu() {
     document.getElementById('menuToggle').style.display = 'none';
 }
 
+function toggleBorders(){
+    var plots = document.querySelectorAll('.farmPlot');
+    for (i = 0; i < plots.length; i++) {
+        plots[i].classList.toggle("farmPlotBorder");
+    }
+}
+
 
 //Run all the main functions
 function main() {
     
+    //Click New Game to initialise game
     document.getElementById('brandNewGame').addEventListener('click', startGame);
+    
     //Click Back to Main Menu to clear all data and start again
     document.getElementById('backToMenuButton').addEventListener('click',clearAll);
-    document.getElementById('backToMenuButton').addEventListener('click', toggleBackMenu); 
+
+    //Click Farm Borders to show or hide borders on tiles
+    document.getElementById('farmBorders').addEventListener('click', toggleBorders);
 }
 
 // Run the main functions of the page

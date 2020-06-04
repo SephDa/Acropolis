@@ -67,6 +67,8 @@ button:hover {
     box-shadow: 10px 10px 5px rgba(0,0,0,0.24);
 }
 
+/*Impacts Menu Buttons */
+
 button.menuButton{
     background-image: url(plank.jpg);
     background-color: transparent;
@@ -88,7 +90,6 @@ button.menuButton:hover {
 
 button.menuButton:active {
     border-color:blanchedalmond;
-    color:  hsl(0, 53%, 30%);
     text-decoration: line-through ;
 }
 
@@ -224,7 +225,7 @@ select:focus {
 
 #farms {
     height:100%;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .farmPlot {
@@ -232,7 +233,12 @@ select:focus {
     background-image: url(dirt.jpg);
     height: 100px;
     width: 100px;
-    margin: 1%;
+}
+
+.farmPlotBorder {
+    border-style: solid;
+    border-color: black;
+    border-radius: 1px;
 }
 
 /* Impacts Stats*/
@@ -313,3 +319,27 @@ a:active {
 a:visited {
     color: hsl(19, 45%, 38%);
 }
+
+
+/*Scrollbar*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+     
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: hsl(19, 33%, 43%); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(29, 70%, 65%); 
+  }
+
+  /*Buttons on scrollbar */
+  ::-webkit-scrollbar-corner {
+      background: transparent;
+  }
