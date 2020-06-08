@@ -35,6 +35,8 @@ if (amntTiles === "") {
     window.alert("Your game has been saved! Hooray!");
 }) */
 
+const TILE_SIZE = 100;
+
 
 function onFarmClick() {
     window.alert("Nothing has been planted here, yet! Better get cracking!");
@@ -78,13 +80,16 @@ function startGame() {
         //Create amount value based on difficulty level
         switch (difficulty) {
             case "easy":
-                var amntTiles = 25;
+                var amntTiles = 100;
+                
                 break;
             case "medium":
-                var amntTiles = 50;
+                var amntTiles = 200;
+                
                 break;
             case "hard":
-                var amntTiles = 75;
+                var amntTiles = 300;
+                
                 break;
         }
 
@@ -94,10 +99,18 @@ function startGame() {
 }
 
 //Generate the number of divs based on the difficulty value
+
 function generateTiles(value) {
+    var parent = document.getElementById('farms');
+    parent.style.width = (value * TILE_SIZE) + "px";
+    parent.style.height = (value * TILE_SIZE) + "px";
+
     for (var i = 0; i < value; i++) {
         var farmPlot = document.createElement('div');
-        var parent = document.getElementById('farms');
+
+        //Set width and height of farm plots
+        farmPlot.style.width = TILE_SIZE + "px";
+        farmPlot.style.height = TILE_SIZE + "px";
 
         // Add Child div to parent Farm div
         parent.appendChild(farmPlot);
@@ -107,8 +120,9 @@ function generateTiles(value) {
 
         // Run OnClick farmplot function
         farmPlot.addEventListener('click', onFarmClick);
+        
     }
-}
+} 
 
 // Add user typed in name to welcome message
 function addName() {
@@ -177,3 +191,20 @@ function main() {
 
 // Run the main functions of the page
 main();
+
+/*
+function generateTiles(value) {
+    for (var i = 0; i < value; i++) {
+        var farmPlot = document.createElement('div');
+        var parent = document.getElementById('farms');
+
+        // Add Child div to parent Farm div
+        parent.appendChild(farmPlot);
+
+        // Add class to newly created divs
+        farmPlot.classList.add('farmPlot');
+
+        // Run OnClick farmplot function
+        farmPlot.addEventListener('click', onFarmClick);
+    }
+} */

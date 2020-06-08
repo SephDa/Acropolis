@@ -221,18 +221,13 @@ select:focus {
     border-color: hsl(35, 14%, 30%);
     border-style: ridge;
     width: 98%;
-}
-
-#farms {
-    height:100%;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .farmPlot {
     display: inline-block;
     background-image: url(dirt.jpg);
-    height: 100px;
-    width: 100px;
+    vertical-align: top;
 }
 
 .farmPlotBorder {
