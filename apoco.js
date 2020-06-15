@@ -53,16 +53,6 @@ function startGame() {
         window.alert("You must enter a user name!");
         return;
     }
-
-    // Get crop type
-    var cropType = document.getElementById('fruitType').value;
-    
-    // Check if user has selected crop type
-    if (cropType === "initial") {
-        window.alert("You need to select a crop type");
-        return;
-    }
-
     //Get difficulty type
     var difficulty = document.getElementById('difficulty').value;
 
@@ -76,26 +66,42 @@ function startGame() {
         //Toggle Welcome Menu
         toggleMenu(); 
         addName();
+        addDifficulty(difficulty);
 
         //Create amount value based on difficulty level
         switch (difficulty) {
             case "easy":
                 var amntTiles = 10;
-                
                 break;
             case "medium":
                 var amntTiles = 20;
-                
                 break;
             case "hard":
                 var amntTiles = 30;
-                
                 break;
         }
 
         //Generate the number of divs based on the value above
         generateTiles(amntTiles);
     }   
+}
+
+//Add Difficulty choice to page
+function addDifficulty(value) {
+    var difficulty = value;
+    var difficultyHolder = document.getElementById('difficultyStamp');
+    difficultyHolder.textContent="";
+    switch (difficulty) {
+        case "easy":
+            difficultyHolder.textContent = "Mode: Easy";
+            break;
+        case "medium":
+            difficultyHolder.textContent = "Mode: Medium";
+            break;
+        case "hard":
+            difficultyHolder.textContent = "Mode: Hard";
+            break;
+    }
 }
 
 //Generate the number of divs based on the difficulty value
@@ -148,9 +154,6 @@ function clearAll() {
     //Clear No of Plots entered
     document.getElementById("difficulty").value = "initial";
 
-    //Clear Crop Type
-    document.getElementById("fruitType").value = "initial";
-
     //Delete the divs
     var parent = document.getElementById('farms');
     var children = document.querySelectorAll('.farmPlot');
@@ -198,20 +201,3 @@ function main() {
 
 // Run the main functions of the page
 main();
-
-/*
-function generateTiles(value) {
-    for (var i = 0; i < value; i++) {
-        var farmPlot = document.createElement('div');
-        var parent = document.getElementById('farms');
-
-        // Add Child div to parent Farm div
-        parent.appendChild(farmPlot);
-
-        // Add class to newly created divs
-        farmPlot.classList.add('farmPlot');
-
-        // Run OnClick farmplot function
-        farmPlot.addEventListener('click', onFarmClick);
-    }
-} */

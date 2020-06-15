@@ -8,9 +8,13 @@
     src:  url(BottleShopFaded.ttf);
   }
 
+  @font-face {
+    font-family: 'StampFont';
+    src:  url(stamp.otf) format("opentype");
+  }
+
 html {
     height: 100%;
-    
 }
 
 * {
@@ -25,7 +29,7 @@ div, html, body, footer {
 
 #welcomeAndTag {
     height: 100%;
-    width: 75%;
+    width: 50%;
     float: left;
     padding-left: 1%;
     padding-top: 1%;
@@ -38,6 +42,15 @@ div, html, body, footer {
 #tagLine {
     margin-top: 10px;
     font-size: 30px;
+}
+
+#difficultyStamp {
+    font-family: 'StampFont';
+    float: left;
+    margin-right:1%;
+    font-size: 42px;
+    text-align: center;
+    width: fit-content;
 }
 
 /*Holds the Menu Buttons*/
