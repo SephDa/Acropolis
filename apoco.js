@@ -80,15 +80,15 @@ function startGame() {
         //Create amount value based on difficulty level
         switch (difficulty) {
             case "easy":
-                var amntTiles = 100;
+                var amntTiles = 10;
                 
                 break;
             case "medium":
-                var amntTiles = 200;
+                var amntTiles = 20;
                 
                 break;
             case "hard":
-                var amntTiles = 300;
+                var amntTiles = 30;
                 
                 break;
         }
@@ -104,23 +104,30 @@ function generateTiles(value) {
     var parent = document.getElementById('farms');
     parent.style.width = (value * TILE_SIZE) + "px";
     parent.style.height = (value * TILE_SIZE) + "px";
+    parent.style.margin = "auto";
 
     for (var i = 0; i < value; i++) {
-        var farmPlot = document.createElement('div');
+        for (var j =0; j < value; j++) {
+            var farmPlot = document.createElement('div');
 
-        //Set width and height of farm plots
-        farmPlot.style.width = TILE_SIZE + "px";
-        farmPlot.style.height = TILE_SIZE + "px";
+            //Set width and height of farm plots
+            farmPlot.style.width = TILE_SIZE + "px";
+            farmPlot.style.height = TILE_SIZE + "px";
 
-        // Add Child div to parent Farm div
-        parent.appendChild(farmPlot);
+            // Add Child div to parent Farm div
+            parent.appendChild(farmPlot);
 
-        // Add class to newly created divs
-        farmPlot.classList.add('farmPlot');
+            // Add class to newly created divs
+            farmPlot.classList.add('farmPlot');
 
-        // Run OnClick farmplot function
-        farmPlot.addEventListener('click', onFarmClick);
-        
+            //Randomly assign background image to each 
+            var dirt = Math.floor(Math.random() * 3) + 1;
+            farmPlot.style.backgroundImage = ("url('dirt" + dirt + ".jpg')");
+            farmPlot.style.backgroundSize = "100%";
+            
+            // Run OnClick farmplot function
+            farmPlot.addEventListener('click', onFarmClick);
+        }
     }
 } 
 

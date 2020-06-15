@@ -226,7 +226,7 @@ select:focus {
 
 .farmPlot {
     display: inline-block;
-    background-image: url(dirt.jpg);
+    /*background-image: url(dirt1.jpg);*/
     vertical-align: top;
 }
 
