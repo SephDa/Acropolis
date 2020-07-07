@@ -66,9 +66,11 @@ function startGame() {
         //Toggle Welcome Menu
         toggleMenu(); 
         addName();
+        //setStats(difficulty);
         addDifficulty(difficulty);
+        allocateResources(difficulty);
 
-        //Create amount value based on difficulty level
+        //Create amount of tiles value based on difficulty level
         switch (difficulty) {
             case "easy":
                 var amntTiles = 10;
@@ -83,6 +85,7 @@ function startGame() {
 
         //Generate the number of divs based on the value above
         generateTiles(amntTiles);
+        
     }   
 }
 
@@ -160,7 +163,7 @@ function clearAll() {
 
     // Remove Child farmplot divs from parent Farm div
     for (i = 0; i < children.length; i++) {
-        if (children[i].className === "farmPlot") {
+        if (children[i].classList.contains("farmPlot")) {
             parent.removeChild(children[i]);
         }
     }
@@ -185,6 +188,74 @@ function toggleBorders(){
     }
 }
 
+function reset() {
+    
+    clearAll();
+    document.getElementById("inputName").value ="Sam Cheat Mode";
+    document.getElementById('difficulty').value ="easy";
+    startGame();
+
+}
+
+//Set Resources based on Difficulty chosen
+
+function allocateResources(value) {
+    var difficulty = value;
+    var health = document.getElementById('healthStatProgress');
+    var hunger = document.getElementById('hungerStatProgress');
+    var sleep = document.getElementById('sleepStatProgress');
+
+    switch (difficulty) {
+        case "easy":
+            health.textContent = "Health 100%";
+            health.style.width = "100%";
+            hunger.textContent = "Hunger 100%";
+            hunger.style.width = "100%";
+            sleep.textContent = "Sleep 100%";
+            sleep.style.width = "100%";
+            break;
+        case "medium":
+            health.textContent = "Health 75%";
+            health.style.width = '75%';
+            hunger.textContent = "Hunger 75%";
+            hunger.style.width = "75%";
+            sleep.textContent = "Sleep 75%";
+            sleep.style.width = "75%";
+            break;
+        case "hard":
+            health.textContent = "Health 50%";
+            health.style.width = "50%";
+            health.style.fontSize = "40px";
+            hunger.textContent = "Hunger 50%";
+            hunger.style.width = "50%";
+            hunger.style.fontSize = "40px";
+            sleep.textContent = "Sleep 50%";
+            sleep.style.width = "50%";
+            sleep.style.fontSize = "40px";
+            var icons = document.querySelectorAll('.fas');
+            for (i =0;i < icons.length; i++) {
+                icons[i].style.fontSize = "40px";
+            }
+            break;
+    }
+}
+
+/*function setStats(value) {
+    var difficulty = value;
+    var statHolder = document.getElementById('stats');
+    
+    switch (difficulty) {
+        case "easy":
+            statHolder.style.width = "1000px";
+            break;
+        case "medium":
+            statHolder.style.width = "2000px";
+            break;
+        case "hard":
+            statHolder.style.width = "3000px";
+            break;
+    }
+}*/
 
 //Run all the main functions
 function main() {
@@ -197,6 +268,9 @@ function main() {
 
     //Click Farm Borders to show or hide borders on tiles
     document.getElementById('farmBorders').addEventListener('click', toggleBorders);
+
+    //Cheat Button to reset stuff without having to go back
+    document.getElementById('cheatButton').addEventListener('click',reset);
 }
 
 // Run the main functions of the page

@@ -29,7 +29,7 @@ div, html, body, footer {
 
 #welcomeAndTag {
     height: 100%;
-    width: 50%;
+    width: 33%;
     float: left;
     padding-left: 1%;
     padding-top: 1%;
@@ -44,35 +44,56 @@ div, html, body, footer {
     font-size: 30px;
 }
 
+.twoThirdsCover {
+    width : 66%;
+    display: inline-block;
+    height: 100%;
+}
+
 #difficultyStamp {
     font-family: 'StampFont';
+}
+
+.times {
+    height:50%;
     float: left;
-    margin-right:1%;
     font-size: 42px;
-    text-align: center;
-    width: fit-content;
+}
+
+.mid {
+    height:32%;
+    float:left;
+    width:100%;
+    font-size: 42px;
+    margin-top:1%;
 }
 
 /*Holds the Menu Buttons*/
 
-#buttonHolder {
+/*#buttonHolder {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     
 }
+*/
 
 /*Impacts All Buttons on Page*/
 
 button {
-    width: 50%;
-    display: block;
-    float: left;
-    margin: 5%;
+    width: 100%;
+    margin: 1%;
     border-radius: 5px;
     transition-duration: 0.1s;
+    padding-top:2%;
+
 }
+
+button.subMenu {
+    font-size: 24px;
+}
+
 
 button:hover {
     background-color: tan;
@@ -86,6 +107,7 @@ button.menuButton{
     background-image: url(plank.jpg);
     background-color: transparent;
     color: hsl(45, 39%, 68%) ;
+    width: 50%;
     border-width: 0.0px;
     border-color:blanchedalmond ;
     height: 20%;
@@ -199,7 +221,7 @@ select:focus {
 
 .cover {
     background-color: hsl(32, 11%, 37%, 0.5);
-    margin-bottom: 0.5%;
+    margin-bottom: 0.3%;
 }
 
 .cover.blurb {
@@ -207,11 +229,7 @@ select:focus {
 }
 
 .cover.game {
-    height: 60%;
-}
-
-.cover.stats {
-    height: 10%;
+    height: 79%;
 }
 
 
@@ -227,6 +245,69 @@ select:focus {
     width: auto;
     height: 100%;
     display: flex;
+    position: relative;
+}
+
+#stats {
+    position: absolute;
+    top: 0px;
+    margin: 2%;
+    width: calc(96% - 20px);
+    padding-top:10px;
+    padding-left:10px;
+}
+
+.stat {
+    display: inline-block;
+    width: 24%;
+}
+
+#healthStat .progressBar {
+    background-color: rgb(190, 30, 30);
+}
+
+#hungerStat .progressBar {
+    background-color: rgb(218, 132, 20);
+}
+
+#sleepStat .progressBar {
+    background-color: rgb(16, 9, 71);
+}
+
+.progressBar {
+    display: inline-block;
+    height:50px;
+    border-radius: 1.5em;
+    color: white;
+    font-size: 50px;
+    padding-left: .3em;
+}
+
+.coverstat {
+    width: 80%;
+    display: inline-block;
+    height: 50px;
+    border-radius: 1.5em;
+    background-color: rgba(169,169,169,0.5);
+}
+
+/*.progressBar::before{
+    content: attr(data-label);
+    display: flex;
+    position: absolute;
+    left: .1em;
+    right: .1em;
+    top: .1em;
+    bottom: .1em;
+    max-width: 96%;
+    width: 99%; 
+    border-radius: 1em;
+    padding-left: .3em;
+}
+*/
+
+.money {
+    background-color: transparent;
 }
 
 #centralGameArea {
@@ -234,7 +315,7 @@ select:focus {
     border-color: hsl(35, 14%, 30%);
     border-style: ridge;
     width: 98%;
-    overflow: auto;
+    overflow: auto; 
 }
 
 .farmPlot {
@@ -249,67 +330,56 @@ select:focus {
     border-radius: 1px;
 }
 
-/* Impacts Stats*/
-
-.statsCapture {
-    width: 48%;
+.foot {
+    width:33%;
+    padding-left: 20px;
     display: inline-block;
 }
 
-#statsBlock {
-    padding: 20px;
-}
-
-#playerStats {
-    font-size: 20px;
-}
-
-#statHeading {
-    border-style: none;
-}
-
-.stat {
+.subFoot {
+    width: 49%;
     display: inline-block;
-    width: 15%;
-    padding: 1%;
-    border-style: ridge;
-    border-color:hsl(35, 14%, 30%) ;
-}
-
-/*Impacts small brown boxes in Blurb and Footer*/
-
-.smallBoxes {
-    background-color: hsl(35, 14%, 30%,0.5);
-    width: 20%;
+    padding-left: 20%;
     height: 100%;
-    overflow: hidden;
-}
-
-footer {
-    height: 10%;
-    padding: 1%;
-
-}
-
-#authors {
-    width:75%;
-    float: left;
-    padding: 10px;
-}
-
-#socials {
-    width:25%;
-    float: left;
-    padding: 10px;
 }
 
 .fab {
     font-size: 40px;
+    width:fit-content
 }
 .fas {
-    font-size: 30px;
+    font-size: 50px;
+    width:fit-content;
 }
 
+.far {
+    font-size: 50px;
+    width:fit-content
+}
+
+.fas.fa-heart {
+    color: rgb(190, 30, 30);
+}
+
+.far.fa-heart {
+    color:rgb(190,30,30);
+}
+
+.fas.fa-drumstick-bite {
+    color: rgb(218, 132, 20);
+}
+
+.fas.fa-moon{
+    color: rgb(16, 9, 71);
+}
+
+.far.fa-moon {
+    color: rgb(16, 9, 71);
+}
+
+.fas.fa-coins {
+    color: rgb(197, 185, 20);
+}
 /* Styling the links on the page */
 
 a:link {
@@ -325,7 +395,7 @@ a:active {
 }
 
 a:visited {
-    color: hsl(19, 45%, 38%);
+    color: hsl(51, 28%, 68%);
 }
 
 

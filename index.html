@@ -12,7 +12,7 @@
         <div id ="gradient">
             <div id = "menuBox">
                 Welcome to Acropalis!
-                <p>Enter your stats to start a game:</p>
+                <p>Enter your details to start a game:</p>
                     <div>
                         <div class="newGameStat">
                             Name:
@@ -52,20 +52,57 @@
                             Where post-apocalptic fun meets farming
                             </div>
                         </div>
-                        <div id = "difficultyStamp" class = "smallBoxes">
-                            Easy/Hard/Difficult
-                        </div>
-                        <div id = "buttonHolder" class = "smallBoxes">
-                            <button id = "backToMenuButton">Back to Main Menu</button>
-                            <button id = "farmBorders">Farm Borders</button>
+                        <div class = "twoThirdsCover">
+                            <div id="middlecover" class = "subFoot">
+                                <div id = "difficultyStamp" class="mid">
+                                Easy/Hard/Difficult
+                                </div>
+                                <div id ="timerBox" class="mid">Days:0</div>
+                                <div id ="time" class ="mid">Time: 00:00:00</div>
+                            </div>    
+                            <div id = "buttonHolder" class = "subFoot">
+                                <button id = "backToMenuButton" class = "subMenu">Back to Main Menu</button>
+                                <button id = "farmBorders" class = "subMenu">Farm Borders</button>
+                                <button id = "cheatButton" class = "subMenu">Cheat Button</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class = "cover game">
+
                     <div id = "gameArea">
+                        <div id = "stats">
+                            <div class = "stat" id = "healthStat"> 
+                                <i class="fas fa-heart"></i>
+                                <div class="coverstat">
+                                    <div id="healthStatProgress" class="progressBar">sdfg</div>
+                                </div>
+                                
+                            </div>
+
+                            <div class = "stat" id = "hungerStat">
+                                <i class="fas fa-drumstick-bite"></i>
+                                <div class="coverstat">
+                                    <div id = "hungerStatProgress" class="progressBar">dsf</div>
+                                </div>
+                            </div>
+                            <div class = "stat" id = "sleepStat">
+                                <i class="fas fa-moon"></i>
+                                <div class="coverstat">
+                                    <div id = "sleepStatProgress" class="progressBar">sdf</div>
+                                </div>
+                            </div>
+
+                            <div class = "stat" id = "moneyStat">
+                                <i class="fas fa-coins"></i>
+                                <div class="coverstat">
+                                    <div class="progressBar money"></div>
+                                </div>
+                            </div>
+                        </div>
                         
-                        <div id= "centralGameArea">
+                        <div id= "centralGameArea">                                                      
                             <div id = "farms">
                                 
                             </div>
@@ -74,44 +111,21 @@
                     </div>
                 </div>
 
-                <div class = "cover stats">
-                    <div id= "statsBlock">
-                        <div id = playerStats class ="statsCapture">
-
-                            <div id = "statHeading" class = "stat">
-                                Player Stats: 
-                            </div>
-
-                            <div class = "stat">
-                            Seeds Planted: 0
-                            </div>
-
-                            <div class = "stat">
-                            Fruit Harvested: 0
-                            </div>
-
-                            <div class = "stat">
-                            Total Money: 0
-                            </div>
-                                
-                        </div>
-                    </div>
-                </div>
-                    
                 <footer class = "cover">
-                    <div id = "authors">
+                    <div class = "foot">
                         A game by: Samantha and Mathew Henson 
                         <br>The ultimate brother-sister duo
-                        <br>
-                        <br>Have a comment or question? 
-                        <br> Email: <a id="email" href=mailto:samantha.j.h@live.com>samantha.j.h@live.com</a>
-                            
                     </div>
-                    <div id = "socials" class = "smallBoxes">
-                        Connect with us!
-                        <br>
-                        <a href=https://github.com/SephDa/apoco><i class="fab fa-github"></i></a>
-                        <a href=https://twitter.com/S_J_Henson><i class="fab fa-twitter"></i></a>
+                    <div class = "twoThirdsCover">
+                        <div class="subFoot">
+                            Have a comment or question? 
+                            <br> Email: <a id="email" href=mailto:samantha.j.h@live.com>samantha.j.h@live.com</a>
+                        </div>
+
+                        <div class = "subFoot">
+                            <a href=https://github.com/SephDa/apoco><i class="fab fa-github"></i></a>
+                            <a href=https://twitter.com/S_J_Henson><i class="fab fa-twitter"></i></a>
+                        </div>
                     </div>
                 </footer>
             </div>    
