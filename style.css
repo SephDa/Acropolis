@@ -54,15 +54,12 @@ div, html, body, footer {
     font-family: 'StampFont';
 }
 
-.times {
-    height:50%;
-    float: left;
-    font-size: 42px;
+.time {
+    width: 45%;
+    display: inline-block;
 }
 
 .mid {
-    height:32%;
-    float:left;
     width:100%;
     font-size: 42px;
     margin-top:1%;
@@ -234,9 +231,8 @@ select:focus {
 
 
 #blurb {
-    padding: 20px;
+    padding: 5px;
     width: auto;
-    overflow: auto;
     height: 100%;
 }
 
@@ -281,6 +277,18 @@ select:focus {
     color: white;
     font-size: 50px;
     padding-left: .3em;
+    
+}
+
+.statDetail {
+    position: absolute;
+    width: 50%;
+    display: inline-block;
+    padding-left: .1em;
+}
+
+.percStat {
+    padding-left:50%;
 }
 
 .coverstat {
@@ -289,6 +297,7 @@ select:focus {
     height: 50px;
     border-radius: 1.5em;
     background-color: rgba(169,169,169,0.5);
+    position: relative;
 }
 
 /*.progressBar::before{
@@ -420,4 +429,8 @@ a:visited {
   /*Buttons on scrollbar */
   ::-webkit-scrollbar-corner {
       background: transparent;
+  }
+
+  #socials {
+      text-align: right;
   }

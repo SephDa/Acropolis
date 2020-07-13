@@ -85,7 +85,9 @@ function startGame() {
 
         //Generate the number of divs based on the value above
         generateTiles(amntTiles);
-        
+        setInterval(depleteHunger, 1000);
+        setInterval(hourTime, 10000);
+        setInterval(dayTime, 240000);
     }   
 }
 
@@ -169,6 +171,12 @@ function clearAll() {
     }
 
     toggleBackMenu();
+
+    // Set timers to zero
+    document.getElementById('daysnumber').textContent = "00"
+    document.getElementById('hoursnumber').textContent = "00"
+    document.getElementById
+
 }
 
 function toggleMenu() {
@@ -202,60 +210,101 @@ function reset() {
 function allocateResources(value) {
     var difficulty = value;
     var health = document.getElementById('healthStatProgress');
+    var healthperc = document.getElementById('healthStatPercentage');
+    
     var hunger = document.getElementById('hungerStatProgress');
+    var hungerperc = document.getElementById('hungerStatPercentage')
+    
     var sleep = document.getElementById('sleepStatProgress');
+    var sleepperc = document.getElementById('sleepStatPercentage');
 
     switch (difficulty) {
         case "easy":
-            health.textContent = "Health 100%";
+            healthperc.textContent = "100";
             health.style.width = "100%";
-            hunger.textContent = "Hunger 100%";
+           
+            hungerperc.textContent = "100";
             hunger.style.width = "100%";
-            sleep.textContent = "Sleep 100%";
+           
+            sleepperc.textContent = "100";
             sleep.style.width = "100%";
             break;
         case "medium":
-            health.textContent = "Health 75%";
+            healthperc.textContent = "75";
             health.style.width = '75%';
-            hunger.textContent = "Hunger 75%";
+        
+            hungerperc.textContent = "75";
             hunger.style.width = "75%";
-            sleep.textContent = "Sleep 75%";
+            
+            sleepperc.textContent = "75";
             sleep.style.width = "75%";
             break;
         case "hard":
-            health.textContent = "Health 50%";
+            healthperc.textContent = "50";
             health.style.width = "50%";
-            health.style.fontSize = "40px";
-            hunger.textContent = "Hunger 50%";
+            
+            hungerperc.textContent = "50";
             hunger.style.width = "50%";
-            hunger.style.fontSize = "40px";
-            sleep.textContent = "Sleep 50%";
+            
+            sleepperc.textContent = "50";
             sleep.style.width = "50%";
-            sleep.style.fontSize = "40px";
-            var icons = document.querySelectorAll('.fas');
-            for (i =0;i < icons.length; i++) {
-                icons[i].style.fontSize = "40px";
-            }
+            
             break;
     }
 }
 
-/*function setStats(value) {
-    var difficulty = value;
-    var statHolder = document.getElementById('stats');
-    
-    switch (difficulty) {
-        case "easy":
-            statHolder.style.width = "1000px";
+
+function depleteHunger() {
+    var hungerText = document.getElementById('hungerStatPercentage');
+    var hunger = parseInt((hungerText.textContent),10);
+
+    var hungerBar = document.getElementById('hungerStatProgress');
+
+    var damage = 5;
+
+    //var hunger = hunger - damage;
+    //var hunger = hunger.toString()
+
+    //hungerText.textContent = hunger;
+
+    switch (hunger) {
+        case (hunger > 0):
+            var hunger = hunger - damage;
+            var hunger = hunger.toString()
+
+            hungerText.textContent = hunger;
+            hungerBar.style.width = hunger+"%";
             break;
-        case "medium":
-            statHolder.style.width = "2000px";
-            break;
-        case "hard":
-            statHolder.style.width = "3000px";
+
+        case (hunger <= 0):
+            alert("You have starved to death!")
+            clearAll();
             break;
     }
-}*/
+}
+
+function hourTime() {
+    
+    var hoursText = document.getElementById('hoursnumber');
+    var hours = parseInt((hoursText.textContent),10);
+
+    if (hours >= 24) {
+        hoursText.textContent = "1";
+    } else {
+        var hours = (hours + 1).toString();
+        hoursText.textContent = hours;
+    }
+}
+
+function dayTime() {
+    var daysText = document.getElementById('daysnumber');
+    var days = parseInt((daysText.textContent),10);
+
+    var days = (days + 1).toString();
+    daysText.textContent = days;
+
+}
+
 
 //Run all the main functions
 function main() {
@@ -271,6 +320,8 @@ function main() {
 
     //Cheat Button to reset stuff without having to go back
     document.getElementById('cheatButton').addEventListener('click',reset);
+
+   
 }
 
 // Run the main functions of the page

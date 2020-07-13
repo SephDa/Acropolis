@@ -57,8 +57,13 @@
                                 <div id = "difficultyStamp" class="mid">
                                 Easy/Hard/Difficult
                                 </div>
-                                <div id ="timerBox" class="mid">Days:0</div>
-                                <div id ="time" class ="mid">Time: 00:00:00</div>
+                                <div class = "mid">
+                                    <div id ="days" class = "time">Days:</div>
+                                        <div id="daysnumber" class = "time">00</div>
+                                    <div id ="hours" class = "time">Hours:</div>
+                                        <div id="hoursnumber" class = "time">00</div>
+                                </div>
+                                
                             </div>    
                             <div id = "buttonHolder" class = "subFoot">
                                 <button id = "backToMenuButton" class = "subMenu">Back to Main Menu</button>
@@ -76,7 +81,10 @@
                             <div class = "stat" id = "healthStat"> 
                                 <i class="fas fa-heart"></i>
                                 <div class="coverstat">
-                                    <div id="healthStatProgress" class="progressBar">sdfg</div>
+                                    <div id="healthStatProgress" class="progressBar">
+                                        <div class = "statDetail">Health</div>
+                                        <div class = "statDetail percStat" id = "healthStatPercentage">100</div>
+                                    </div>
                                 </div>
                                 
                             </div>
@@ -84,13 +92,19 @@
                             <div class = "stat" id = "hungerStat">
                                 <i class="fas fa-drumstick-bite"></i>
                                 <div class="coverstat">
-                                    <div id = "hungerStatProgress" class="progressBar">dsf</div>
+                                    <div id = "hungerStatProgress" class="progressBar">
+                                        <div class = "statDetail">Hunger</div>
+                                        <div class = "statDetail percStat" id = "hungerStatPercentage">100</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class = "stat" id = "sleepStat">
                                 <i class="fas fa-moon"></i>
                                 <div class="coverstat">
-                                    <div id = "sleepStatProgress" class="progressBar">sdf</div>
+                                    <div id = "sleepStatProgress" class="progressBar">
+                                        <div class = "statDetail">Sleep</div>
+                                        <div class = "statDetail percStat" id = "sleepStatPercentage">100</div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -122,7 +136,7 @@
                             <br> Email: <a id="email" href=mailto:samantha.j.h@live.com>samantha.j.h@live.com</a>
                         </div>
 
-                        <div class = "subFoot">
+                        <div class = "subFoot" id = "socials">
                             <a href=https://github.com/SephDa/apoco><i class="fab fa-github"></i></a>
                             <a href=https://twitter.com/S_J_Henson><i class="fab fa-twitter"></i></a>
                         </div>
