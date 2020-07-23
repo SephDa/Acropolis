@@ -193,20 +193,8 @@ p {
     border-width: 1px;
     border-style: solid;
     margin-top:1%;
-}
-
-.avatar > input{
-
-  }
-
-.avatar > input + img{
     cursor: pointer;
-  }
-
-/*.avatar > input:checked + img{
-    border: 2px solid hsl(51, 28%, 68%);
-  }
-*/
+}
 
 .chosen {
     border-style: solid;

@@ -4,7 +4,7 @@ var hungtimer;
 var hrtimer;
 var daytimer;
 
-var selection;
+var selection=0;
 
 //Time related Functions
 // Function that depletes hunger over set period of time
@@ -86,6 +86,12 @@ function startGame() {
 
     //Get difficulty type
     var difficulty = document.getElementById('difficulty').value;
+
+    //Check User has selected an avatar:
+    if (selection===0) {
+        window.alert("You need to select an avatar before proceeding!")
+        return;
+    }
 
     //Check if user has selected difficulty
     if (difficulty === "initial") {
@@ -290,15 +296,13 @@ function allocateResources(value) {
 
 function avatarSelect() {
     var avatars = document.querySelectorAll('.avatar');
-
-
     for (var i = 0; i < avatars.length; i++) {
         avatars[i].addEventListener('click', function () {
             for (var j = 0; j < avatars.length; j++) {
                 avatars[j].classList.remove('chosen');
             }
             this.classList.toggle('chosen')
-            selection = avatars[i].id;
+            selection = this.id;
         })
     }
 }
