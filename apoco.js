@@ -4,6 +4,8 @@ var hungtimer;
 var hrtimer;
 var daytimer;
 
+var selection;
+
 //Time related Functions
 // Function that depletes hunger over set period of time
 
@@ -285,26 +287,21 @@ function allocateResources(value) {
 }
 
 
+
 function avatarSelect() {
-    var avatars = document.querySelectorAll('.avatar input');
-    var selection;
+    var avatars = document.querySelectorAll('.avatar');
+
 
     for (var i = 0; i < avatars.length; i++) {
-        if (avatars[i].checked) {
-            avatars[i].addEventListener('click', function () {
-                this.classList.toggle('chosen')
-                var selection = avatars[i];
+        avatars[i].addEventListener('click', function () {
+            for (var j = 0; j < avatars.length; j++) {
+                avatars[j].classList.remove('chosen');
+            }
+            this.classList.toggle('chosen')
+            selection = avatars[i].id;
         })
-        }
     }
 }
-
-/*for (var i = 0; i < avatars.length; i++) {
-    avatars[i].addEventListener('click', function () {
-        this.classList.toggle('chosen')
-        selection = avatars[i];
-    })
-*/
 
 //Run all the main functions
 function main() {
