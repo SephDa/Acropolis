@@ -21,7 +21,7 @@ html {
     font-family: 'MyWebFont';
 }
 
-div, html, body, footer {
+div, html, body, footer,img {
     box-sizing: border-box;
 }
 
@@ -64,17 +64,6 @@ div, html, body, footer {
     font-size: 42px;
     margin-top:1%;
 }
-
-/*Holds the Menu Buttons*/
-
-/*#buttonHolder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-}
-*/
 
 /*Impacts All Buttons on Page*/
 
@@ -164,6 +153,16 @@ body {
     animation-duration: 2s;
 }
 
+#chooseAv {
+    width:100%;
+}
+
+img { 
+    width: 100px;
+    height: 160px;
+    padding-top:5%;
+}
+
 p {
     margin: 0;
     font-size: 35px;
@@ -185,6 +184,34 @@ p {
     width: 48%;
     font-size: 35px;
     margin-right:1%;
+}
+
+.avatar {
+    width: 33%;
+    float: left;
+    border-color: rgba(0, 0, 0, 0.8);
+    border-width: 1px;
+    border-style: solid;
+    margin-top:1%;
+}
+
+.avatar > input{
+
+  }
+
+.avatar > input + img{
+    cursor: pointer;
+  }
+
+/*.avatar > input:checked + img{
+    border: 2px solid hsl(51, 28%, 68%);
+  }
+*/
+
+.chosen {
+    border-style: solid;
+    border-width: 1px;
+    border-color: hsl(51, 28%, 68%);   
 }
 
 input{
@@ -300,21 +327,6 @@ select:focus {
     position: relative;
 }
 
-/*.progressBar::before{
-    content: attr(data-label);
-    display: flex;
-    position: absolute;
-    left: .1em;
-    right: .1em;
-    top: .1em;
-    bottom: .1em;
-    max-width: 96%;
-    width: 99%; 
-    border-radius: 1em;
-    padding-left: .3em;
-}
-*/
-
 .money {
     background-color: transparent;
 }
@@ -328,10 +340,15 @@ select:focus {
 }
 
 .farmPlot {
-    display: inline-block;
-    /*background-image: url(dirt1.jpg);*/
-    vertical-align: top;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
+
+#farms {
+    position: relative;
+}
+
 
 .farmPlotBorder {
     border-style: solid;

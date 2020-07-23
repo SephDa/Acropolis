@@ -34,9 +34,32 @@
                                 <option value="hard">Hard</option>                                
                             </select>
                         </div>
-                    </div>
+                        
+                        <div class="newGameStat" id="chooseAv">
+                            Choose your avatar:
+                        </div>
+                        
+                        <div class="avatarCover">
+                            <form>
+                                <label class="avatar">
+                                    <input type="radio" name="avatar" checked>
+                                    <img src="farmer.png">
+                                </label>
+
+                                <label class="avatar">
+                                    <input type="radio" name="avatar">
+                                    <img src="woman.png">
+                                </label>
+
+                                <label class="avatar">
+                                    <input type="radio" name="avatar">
+                                    <img src="oldfarmer.png">
+                                </label>
+                            </form>
+                        </div>
+                        
                     <button class = "menuButton" id = "brandNewGame">New Game</button>
-                
+                    </div>
             </div>
 
             <div id = "menuToggle">
@@ -77,6 +100,13 @@
                 <div class = "cover game">
 
                     <div id = "gameArea">
+                        
+                        <div id= "centralGameArea">                                                      
+                            <div id = "farms">
+                                
+                            </div>
+                        </div>
+
                         <div id = "stats">
                             <div class = "stat" id = "healthStat"> 
                                 <i class="fas fa-heart"></i>
@@ -115,13 +145,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div id= "centralGameArea">                                                      
-                            <div id = "farms">
-                                
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 

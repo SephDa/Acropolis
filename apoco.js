@@ -1,47 +1,75 @@
-//OLD CODE
-
-// Get the number of tiles value from the user
-//var plotInputElement = document.getElementById("inputOfPlots");
-//amntTiles = plotInputElement.value;
-
-/*Check if user has entered no. of plots above 0
-if (amntTiles === "") {
-    window.alert("You need to enter a plot value!");
-    return;
-} else if (amntTiles <= 0) {
-    window.alert("You must enter a plot value more than 0!");
-    return;
-} else {
-    //Toggle Welcome Menu
-    toggleMenu(); 
-    addName();
-
-    //Generate the number of divs based on the value above
-    for (var i = 0; i < amntTiles; i++) {
-        var farmPlot = document.createElement('div');
-        var parent = document.getElementById('farms');
-
-        // Add Child div to parent Farm div
-        parent.appendChild(farmPlot);
-
-        // Add class to newly created divs
-        farmPlot.classList.add('farmPlot');
-
-        // Run OnClick farmplot function
-        farmPlot.addEventListener('click', onFarmClick);
-    }*/
-
-/*document.getElementById('saveButton').addEventListener('click', function () {
-    window.alert("Your game has been saved! Hooray!");
-}) */
-
 const TILE_SIZE = 100;
 
+var hungtimer;
+var hrtimer;
+var daytimer;
+
+//Time related Functions
+// Function that depletes hunger over set period of time
+
+function depleteHunger() {
+    var hungerText = document.getElementById('hungerStatPercentage');
+    var hunger = parseInt((hungerText.textContent),10);
+
+    var hungerBar = document.getElementById('hungerStatProgress');
+
+    var damage = 10;
+
+    if (hunger > 0) {
+        hunger = hunger - damage;
+        hunger = hunger.toString()
+
+        hungerText.textContent = hunger;
+        hungerBar.style.width = hunger+"%";
+    } else {
+        alert("You have starved to death!")
+        clearAll();
+    }
+}
+
+// Function that makes hour go up
+
+function hourTime() {
+    var hoursText = document.getElementById('hoursnumber');
+    var hours = parseInt((hoursText.textContent),10);
+
+    if (hours >= 24) {
+        hoursText.textContent = "1";
+    } else {
+        var hours = (hours + 1).toString();
+        hoursText.textContent = hours;
+    }
+}
+
+//Function that makes days go up
+
+function dayTime() {
+    var daysText = document.getElementById('daysnumber');
+    var days = parseInt((daysText.textContent),10);
+
+    var days = (days + 1).toString();
+    daysText.textContent = days;
+}
+
+//Function which captures all time related functions and allocates their milliseconds
+
+function timers() {
+    hungtimer = setInterval(depleteHunger,5000);
+    hrtimer = setInterval(hourTime,5000);
+    daytimer = setInterval(dayTime,240000)
+}
+
+function stopTime() {
+    clearInterval(hungtimer);
+    clearInterval(hrtimer);
+    clearInterval(daytimer);
+}
 
 function onFarmClick() {
     window.alert("Nothing has been planted here, yet! Better get cracking!");
 };
 
+// Functions which start the whole agme
 function startGame() {
 
     //Get the username
@@ -53,6 +81,7 @@ function startGame() {
         window.alert("You must enter a user name!");
         return;
     }
+
     //Get difficulty type
     var difficulty = document.getElementById('difficulty').value;
 
@@ -66,6 +95,7 @@ function startGame() {
         //Toggle Welcome Menu
         toggleMenu(); 
         addName();
+
         //setStats(difficulty);
         addDifficulty(difficulty);
         allocateResources(difficulty);
@@ -85,13 +115,11 @@ function startGame() {
 
         //Generate the number of divs based on the value above
         generateTiles(amntTiles);
-        setInterval(depleteHunger, 1000);
-        setInterval(hourTime, 10000);
-        setInterval(dayTime, 240000);
+        timers();
     }   
 }
 
-//Add Difficulty choice to page
+//Add Difficulty choice to page as a stamp
 function addDifficulty(value) {
     var difficulty = value;
     var difficultyHolder = document.getElementById('difficultyStamp');
@@ -124,6 +152,8 @@ function generateTiles(value) {
             //Set width and height of farm plots
             farmPlot.style.width = TILE_SIZE + "px";
             farmPlot.style.height = TILE_SIZE + "px";
+            farmPlot.style.top = (i * 100) + "px";
+            farmPlot.style.left = (j * 100) + "px";
 
             // Add Child div to parent Farm div
             parent.appendChild(farmPlot);
@@ -132,7 +162,7 @@ function generateTiles(value) {
             farmPlot.classList.add('farmPlot');
 
             //Randomly assign background image to each 
-            var dirt = Math.floor(Math.random() * 3) + 1;
+            var dirt = Math.floor(Math.random() * 4) + 1;
             farmPlot.style.backgroundImage = ("url('dirt" + dirt + ".jpg')");
             farmPlot.style.backgroundSize = "100%";
             
@@ -153,6 +183,13 @@ function addName() {
 
 //Clear the Gamedata 
 function clearAll() {
+    // Stop all time related functions 
+    stopTime()
+    
+    // Set timer divs to 00
+    document.getElementById('daysnumber').textContent = "00";
+    document.getElementById('hoursnumber').textContent = "00";
+    
     //Clear Name
     document.getElementById("inputName").value = "";
 
@@ -171,12 +208,6 @@ function clearAll() {
     }
 
     toggleBackMenu();
-
-    // Set timers to zero
-    document.getElementById('daysnumber').textContent = "00"
-    document.getElementById('hoursnumber').textContent = "00"
-    document.getElementById
-
 }
 
 function toggleMenu() {
@@ -254,61 +285,32 @@ function allocateResources(value) {
 }
 
 
-function depleteHunger() {
-    var hungerText = document.getElementById('hungerStatPercentage');
-    var hunger = parseInt((hungerText.textContent),10);
+function avatarSelect() {
+    var avatars = document.querySelectorAll('.avatar input');
+    var selection;
 
-    var hungerBar = document.getElementById('hungerStatProgress');
-
-    var damage = 5;
-
-    //var hunger = hunger - damage;
-    //var hunger = hunger.toString()
-
-    //hungerText.textContent = hunger;
-
-    switch (hunger) {
-        case (hunger > 0):
-            var hunger = hunger - damage;
-            var hunger = hunger.toString()
-
-            hungerText.textContent = hunger;
-            hungerBar.style.width = hunger+"%";
-            break;
-
-        case (hunger <= 0):
-            alert("You have starved to death!")
-            clearAll();
-            break;
+    for (var i = 0; i < avatars.length; i++) {
+        if (avatars[i].checked) {
+            avatars[i].addEventListener('click', function () {
+                this.classList.toggle('chosen')
+                var selection = avatars[i];
+        })
+        }
     }
 }
 
-function hourTime() {
-    
-    var hoursText = document.getElementById('hoursnumber');
-    var hours = parseInt((hoursText.textContent),10);
-
-    if (hours >= 24) {
-        hoursText.textContent = "1";
-    } else {
-        var hours = (hours + 1).toString();
-        hoursText.textContent = hours;
-    }
-}
-
-function dayTime() {
-    var daysText = document.getElementById('daysnumber');
-    var days = parseInt((daysText.textContent),10);
-
-    var days = (days + 1).toString();
-    daysText.textContent = days;
-
-}
-
+/*for (var i = 0; i < avatars.length; i++) {
+    avatars[i].addEventListener('click', function () {
+        this.classList.toggle('chosen')
+        selection = avatars[i];
+    })
+*/
 
 //Run all the main functions
 function main() {
     
+    avatarSelect()
+
     //Click New Game to initialise game
     document.getElementById('brandNewGame').addEventListener('click', startGame);
     
@@ -320,8 +322,6 @@ function main() {
 
     //Cheat Button to reset stuff without having to go back
     document.getElementById('cheatButton').addEventListener('click',reset);
-
-   
 }
 
 // Run the main functions of the page
