@@ -5,7 +5,7 @@
 /*Impacts Whole Page*/
 @font-face {
     font-family: 'MyWebFont';
-    src:  url(BottleShopFaded.ttf);
+    src:  url(depp.ttf);
   }
 
   @font-face {
@@ -290,7 +290,7 @@ select:focus {
     height:50px;
     border-radius: 1.5em;
     color: white;
-    font-size: 50px;
+    font-size: 30px;
     padding-left: .3em;
     
 }
@@ -300,6 +300,7 @@ select:focus {
     width: 50%;
     display: inline-block;
     padding-left: .1em;
+    padding-top: 0.2em;
 }
 
 .percStat {

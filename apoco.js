@@ -15,7 +15,7 @@ function depleteHunger() {
 
     var hungerBar = document.getElementById('hungerStatProgress');
 
-    var damage = 10;
+    var damage = 5;
 
     if (hunger > 0) {
         hunger = hunger - damage;
@@ -56,8 +56,8 @@ function dayTime() {
 //Function which captures all time related functions and allocates their milliseconds
 
 function timers() {
-    hungtimer = setInterval(depleteHunger,5000);
-    hrtimer = setInterval(hourTime,5000);
+    hungtimer = setInterval(depleteHunger,60000);
+    hrtimer = setInterval(hourTime,10000);
     daytimer = setInterval(dayTime,240000)
 }
 
@@ -124,7 +124,96 @@ function startGame() {
         //Generate the number of divs based on the value above
         generateTiles(amntTiles);
         timers();
+        placeAvatar();
+        document.onkeydown= moveAvatar;
     }   
+}
+
+//Place the avatar
+function placeAvatar() {
+
+    //Get the Parent Div
+    var parent = document.getElementById('farms');
+
+    //Create the child div
+    var newAvatar = document.createElement('div')
+
+    //Append the child to the parent div (add it in!)
+    parent.appendChild(newAvatar);
+
+    //Create an image element
+    var avatarImage = document.createElement('img');
+    
+    //Use the input ID of the avatar the user selected to find the src for the img
+    avatarImage.setAttribute('src', selection+".png"); 
+    avatarImage.style.height= "160px";
+    avatarImage.style.width="100px"
+
+    //Append the img to the newly created child div
+    newAvatar.appendChild(avatarImage);
+
+    //Position the newly created child div
+    newAvatar.style.position = "absolute";
+    newAvatar.style.left="400px";
+    newAvatar.style.top="500px";
+    newAvatar.id = "avatar"+selection;
+}
+
+function moveAvatar(event) {
+    var avatar = document.getElementById("avatar"+selection);
+    var avTop = parseInt(avatar.style.top,10);
+    var avLeft = parseInt(avatar.style.left,10);
+    
+    var difficulty = document.getElementById('difficulty').value
+    switch (difficulty) {
+        case "easy":
+            var amntTiles = 10;
+            break;
+        case "medium":
+            var amntTiles = 20;
+            break;
+        case "hard":
+            var amntTiles = 30;
+            break;
+    }
+        
+    var tiles = amntTiles*100;
+
+    var key = event.keyCode;
+
+    if (key == 87) {
+        avTop = (avTop - 100);
+        if (avTop < 0) {
+            window.alert("You cannot leave the farm, it's dangerous outside.")
+        } else {
+        avatar.style.top = avTop+"px";
+        }
+    } 
+    else if (key == 83) {
+        avTop = (avTop + 100);
+        if (avTop > (tiles-100)) {
+            window.alert("You cannot leave the farm, it's dangerous outside.")
+        } else {
+        avatar.style.top = avTop+"px";
+        }
+    } 
+    else if (key == 68) {
+        avLeft = (avLeft + 100);
+        if (avLeft > (tiles-100)) {
+            window.alert("You cannot leave the farm to the right, it's dangerous outside.")
+        } else {
+            avatar.style.left = avLeft+"px";
+        }
+    } 
+    else if (key == 65) {
+        avLeft = (avLeft - 100);
+        if (avLeft < 0) {
+            window.alert("You cannot leave the farm to the left, it's dangerous outside.")
+        } else {
+        avatar.style.left = avLeft+"px";
+        }
+    }
+    
 }
 
 //Add Difficulty choice to page as a stamp
@@ -205,17 +294,29 @@ function clearAll() {
     document.getElementById("difficulty").value = "initial";
 
     //Delete the divs
+    deleteFarmsDivs();
+
+    //Clear the avatars
+    clearAvatars();
+
+    toggleBackMenu();
+}
+
+function deleteFarmsDivs() {
+    
     var parent = document.getElementById('farms');
     var children = document.querySelectorAll('.farmPlot');
-
-    // Remove Child farmplot divs from parent Farm div
+    
+    // Remove Child farmplot divs from parent Farms div
     for (i = 0; i < children.length; i++) {
         if (children[i].classList.contains("farmPlot")) {
             parent.removeChild(children[i]);
         }
     }
 
-    toggleBackMenu();
+    //Remove Avatar child div from parent Farms div
+    var avatarChild = document.getElementById("avatar"+selection);
+    parent.removeChild(avatarChild);
 }
 
 function toggleMenu() {
@@ -292,7 +393,13 @@ function allocateResources(value) {
     }
 }
 
-
+function clearAvatars() {
+    var avatars = document.querySelectorAll('.avatar');
+    for (var i = 0; i < avatars.length; i++) {
+        avatars[i].classList.remove('chosen');
+    }
+    selection="";
+}
 
 function avatarSelect() {
     var avatars = document.querySelectorAll('.avatar');
@@ -310,6 +417,7 @@ function avatarSelect() {
 //Run all the main functions
 function main() {
     
+    //Player selects the avatar
     avatarSelect()
 
     //Click New Game to initialise game
