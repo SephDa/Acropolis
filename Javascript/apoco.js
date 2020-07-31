@@ -145,7 +145,7 @@ function placeAvatar() {
     var avatarImage = document.createElement('img');
     
     //Use the input ID of the avatar the user selected to find the src for the img
-    avatarImage.setAttribute('src', selection+".png"); 
+    avatarImage.setAttribute('src', "Images/Avatars/"+selection+".png"); 
     avatarImage.style.height= "160px";
     avatarImage.style.width="100px"
 
@@ -260,7 +260,7 @@ function generateTiles(value) {
 
             //Randomly assign background image to each 
             var dirt = Math.floor(Math.random() * 4) + 1;
-            farmPlot.style.backgroundImage = ("url('dirt" + dirt + ".jpg')");
+            farmPlot.style.backgroundImage = ("url('Images/Dirt/dirt" + dirt + ".jpg')");
             farmPlot.style.backgroundSize = "100%";
             
             // Run OnClick farmplot function

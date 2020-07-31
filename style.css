@@ -5,12 +5,12 @@
 /*Impacts Whole Page*/
 @font-face {
     font-family: 'MyWebFont';
-    src:  url(depp.ttf);
+    src:  url(Fonts/depp.ttf);
   }
 
   @font-face {
     font-family: 'StampFont';
-    src:  url(stamp.otf) format("opentype");
+    src:  url(Fonts/stamp.otf) format("opentype");
   }
 
 html {
@@ -90,7 +90,7 @@ button:hover {
 /*Impacts Menu Buttons */
 
 button.menuButton{
-    background-image: url(plank.jpg);
+    background-image: url(Images/Buttons/plank.jpg);
     background-color: transparent;
     color: hsl(45, 39%, 68%) ;
     width: 50%;
@@ -124,7 +124,7 @@ button.menuButton:active {
 }
 
 body {    
-    background-image: url(Background.jpg);
+    background-image: url(./Images/Background/Background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
