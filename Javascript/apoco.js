@@ -1,71 +1,8 @@
 const TILE_SIZE = 100;
 
-var hungtimer;
-var hrtimer;
-var daytimer;
-
 var selection=0;
 
-//Time related Functions
-// Function that depletes hunger over set period of time
-
-function depleteHunger() {
-    var hungerText = document.getElementById('hungerStatPercentage');
-    var hunger = parseInt((hungerText.textContent),10);
-
-    var hungerBar = document.getElementById('hungerStatProgress');
-
-    var damage = 5;
-
-    if (hunger > 0) {
-        hunger = hunger - damage;
-        hunger = hunger.toString()
-
-        hungerText.textContent = hunger;
-        hungerBar.style.width = hunger+"%";
-    } else {
-        alert("You have starved to death!")
-        clearAll();
-    }
-}
-
-// Function that makes hour go up
-
-function hourTime() {
-    var hoursText = document.getElementById('hoursnumber');
-    var hours = parseInt((hoursText.textContent),10);
-
-    if (hours >= 24) {
-        hoursText.textContent = "1";
-    } else {
-        var hours = (hours + 1).toString();
-        hoursText.textContent = hours;
-    }
-}
-
-//Function that makes days go up
-
-function dayTime() {
-    var daysText = document.getElementById('daysnumber');
-    var days = parseInt((daysText.textContent),10);
-
-    var days = (days + 1).toString();
-    daysText.textContent = days;
-}
-
-//Function which captures all time related functions and allocates their milliseconds
-
-function timers() {
-    hungtimer = setInterval(depleteHunger,60000);
-    hrtimer = setInterval(hourTime,10000);
-    daytimer = setInterval(dayTime,240000)
-}
-
-function stopTime() {
-    clearInterval(hungtimer);
-    clearInterval(hrtimer);
-    clearInterval(daytimer);
-}
+var gameTime = new GameTime(1000);
 
 function onFarmClick() {
     window.alert("Nothing has been planted here, yet! Better get cracking!");
@@ -123,8 +60,9 @@ function startGame() {
 
         //Generate the number of divs based on the value above
         generateTiles(amntTiles);
-        timers();
+        gameTime.start();
         placeAvatar();
+        spot.addToPage('farms');
         document.onkeydown= moveAvatar;
     }   
 }
@@ -281,7 +219,7 @@ function addName() {
 //Clear the Gamedata 
 function clearAll() {
     // Stop all time related functions 
-    stopTime()
+    gameTime.stop();
     
     // Set timer divs to 00
     document.getElementById('daysnumber').textContent = "00";
@@ -435,3 +373,39 @@ function main() {
 
 // Run the main functions of the page
 main();
+
+// class Animal {
+//     type;
+//     image;
+//     id;
+//     element;
+//     constructor( type, id ) {
+//         this.type = type;
+//         this.id = id;
+//         // Based on the type - set an image
+//         if ( type === 'cat' )
+//             this.image = 'cat'; 
+//         // Add the an image to the page
+//         this.element = document.createElement('image');
+//         // Add to parent
+//         document.querySelector('.farms').appendChild( this.element );
+//         this.element.setAttribute( 'id', id );
+//         this.element.setAttribute('src', this.image + ".png"); 
+//     }
+//     setPosition( left, top ) {
+//         document.querySelector(this.id).style.left = left;
+//         document.querySelector(this.id).style.top = top;
+//     }
+//     remove() {
+//         document.removeChild(this.element);
+//     }
+// }
+// var cat = new Animal('cat', 'cat1');
+// var cat2 = new Animal('cat', 'cat2');
+// var cats = [];
+// cats.push( cat );
+// cats.push( cat2 );
+// cats.push( 3 );
+// // Cleanup
+// for ( var i = 0; i < cats.length; i++ )
+//     cats[i].remove();
