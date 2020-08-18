@@ -1,12 +1,11 @@
 const TILE_SIZE = 100;
 
 var selection=0;
+var amntTiles=0;
 
-var gameTime = new GameTime(1000);
-
-function onFarmClick() {
-    window.alert("Nothing has been planted here, yet! Better get cracking!");
-};
+var gameTime = new GameTime(10000);
+var tiler = new Terrain();
+var avatar = new Avatar();
 
 // Functions which start the whole agme
 function startGame() {
@@ -34,125 +33,44 @@ function startGame() {
     if (difficulty === "initial") {
         window.alert("You need to choose your difficulty.");
         return;
-    } else {
+    }
         
         
-        //Toggle Welcome Menu
-        toggleMenu(); 
-        addName();
+    //Toggle Welcome Menu
+    toggleMenu(); 
+    addName();
 
-        //setStats(difficulty);
-        addDifficulty(difficulty);
-        allocateResources(difficulty);
+    //setStats(difficulty);
+    addDifficulty(difficulty);
+    allocateResources(difficulty);
 
-        //Create amount of tiles value based on difficulty level
-        switch (difficulty) {
-            case "easy":
-                var amntTiles = 10;
-                break;
-            case "medium":
-                var amntTiles = 20;
-                break;
-            case "hard":
-                var amntTiles = 30;
-                break;
-        }
-
-        //Generate the number of divs based on the value above
-        generateTiles(amntTiles);
-        gameTime.start();
-        placeAvatar();
-        spot.addToPage('farms');
-        document.onkeydown= moveAvatar;
-    }   
-}
-
-//Place the avatar
-function placeAvatar() {
-
-    //Get the Parent Div
-    var parent = document.getElementById('farms');
-
-    //Create the child div
-    var newAvatar = document.createElement('div')
-
-    //Append the child to the parent div (add it in!)
-    parent.appendChild(newAvatar);
-
-    //Create an image element
-    var avatarImage = document.createElement('img');
-    
-    //Use the input ID of the avatar the user selected to find the src for the img
-    avatarImage.setAttribute('src', "Images/Avatars/"+selection+".png"); 
-    avatarImage.style.height= "160px";
-    avatarImage.style.width="100px"
-
-    //Append the img to the newly created child div
-    newAvatar.appendChild(avatarImage);
-
-    //Position the newly created child div
-    newAvatar.style.position = "absolute";
-    newAvatar.style.left="400px";
-    newAvatar.style.top="500px";
-    newAvatar.id = "avatar"+selection;
-}
-
-function moveAvatar(event) {
-    var avatar = document.getElementById("avatar"+selection);
-    var avTop = parseInt(avatar.style.top,10);
-    var avLeft = parseInt(avatar.style.left,10);
-    
-    var difficulty = document.getElementById('difficulty').value
+    //Create amount of tiles value based on difficulty level
     switch (difficulty) {
         case "easy":
-            var amntTiles = 10;
+            amntTiles = 10;
             break;
         case "medium":
-            var amntTiles = 20;
+            amntTiles = 20;
             break;
         case "hard":
-            var amntTiles = 30;
+            amntTiles = 30;
             break;
     }
-        
-    var tiles = amntTiles*100;
 
-    var key = event.keyCode;
-
-    if (key == 87) {
-        avTop = (avTop - 100);
-        if (avTop < 0) {
-            window.alert("You cannot leave the farm, it's dangerous outside.")
-        } else {
-        avatar.style.top = avTop+"px";
-        }
-    } 
-    else if (key == 83) {
-        avTop = (avTop + 100);
-        if (avTop > (tiles-100)) {
-            window.alert("You cannot leave the farm, it's dangerous outside.")
-        } else {
-        avatar.style.top = avTop+"px";
-        }
-    } 
-    else if (key == 68) {
-        avLeft = (avLeft + 100);
-        if (avLeft > (tiles-100)) {
-            window.alert("You cannot leave the farm to the right, it's dangerous outside.")
-        } else {
-            avatar.style.left = avLeft+"px";
-        }
-    } 
-    else if (key == 65) {
-        avLeft = (avLeft - 100);
-        if (avLeft < 0) {
-            window.alert("You cannot leave the farm to the left, it's dangerous outside.")
-        } else {
-        avatar.style.left = avLeft+"px";
-        }
-    }
+    //Generate the number of divs based on the value above
     
+    tiler.generateTiles(amntTiles);
+    
+    /**Starts Gametime */
+    gameTime.start();
+
+    avatar.placeAvatar();
+
+    spot.addToPage('farms');
+    
+    document.onkeydown= avatar.moveAvatar;   
 }
+
 
 //Add Difficulty choice to page as a stamp
 function addDifficulty(value) {
@@ -171,41 +89,6 @@ function addDifficulty(value) {
             break;
     }
 }
-
-//Generate the number of divs based on the difficulty value
-
-function generateTiles(value) {
-    var parent = document.getElementById('farms');
-    parent.style.width = (value * TILE_SIZE) + "px";
-    parent.style.height = (value * TILE_SIZE) + "px";
-    parent.style.margin = "auto";
-
-    for (var i = 0; i < value; i++) {
-        for (var j =0; j < value; j++) {
-            var farmPlot = document.createElement('div');
-
-            //Set width and height of farm plots
-            farmPlot.style.width = TILE_SIZE + "px";
-            farmPlot.style.height = TILE_SIZE + "px";
-            farmPlot.style.top = (i * 100) + "px";
-            farmPlot.style.left = (j * 100) + "px";
-
-            // Add Child div to parent Farm div
-            parent.appendChild(farmPlot);
-
-            // Add class to newly created divs
-            farmPlot.classList.add('farmPlot');
-
-            //Randomly assign background image to each 
-            var dirt = Math.floor(Math.random() * 4) + 1;
-            farmPlot.style.backgroundImage = ("url('Images/Dirt/dirt" + dirt + ".jpg')");
-            farmPlot.style.backgroundSize = "100%";
-            
-            // Run OnClick farmplot function
-            farmPlot.addEventListener('click', onFarmClick);
-        }
-    }
-} 
 
 // Add user typed in name to welcome message
 function addName() {
@@ -231,30 +114,13 @@ function clearAll() {
     //Clear No of Plots entered
     document.getElementById("difficulty").value = "initial";
 
-    //Delete the divs
-    deleteFarmsDivs();
+    //Delete the child divs
+    tiler.deleteFarmsDivs();
 
     //Clear the avatars
-    clearAvatars();
+    avatar.clearAvatars();
 
     toggleBackMenu();
-}
-
-function deleteFarmsDivs() {
-    
-    var parent = document.getElementById('farms');
-    var children = document.querySelectorAll('.farmPlot');
-    
-    // Remove Child farmplot divs from parent Farms div
-    for (i = 0; i < children.length; i++) {
-        if (children[i].classList.contains("farmPlot")) {
-            parent.removeChild(children[i]);
-        }
-    }
-
-    //Remove Avatar child div from parent Farms div
-    var avatarChild = document.getElementById("avatar"+selection);
-    parent.removeChild(avatarChild);
 }
 
 function toggleMenu() {
@@ -331,32 +197,11 @@ function allocateResources(value) {
     }
 }
 
-function clearAvatars() {
-    var avatars = document.querySelectorAll('.avatar');
-    for (var i = 0; i < avatars.length; i++) {
-        avatars[i].classList.remove('chosen');
-    }
-    selection="";
-}
-
-function avatarSelect() {
-    var avatars = document.querySelectorAll('.avatar');
-    for (var i = 0; i < avatars.length; i++) {
-        avatars[i].addEventListener('click', function () {
-            for (var j = 0; j < avatars.length; j++) {
-                avatars[j].classList.remove('chosen');
-            }
-            this.classList.toggle('chosen')
-            selection = this.id;
-        })
-    }
-}
-
 //Run all the main functions
 function main() {
     
     //Player selects the avatar
-    avatarSelect()
+    avatar.avatarSelect()
 
     //Click New Game to initialise game
     document.getElementById('brandNewGame').addEventListener('click', startGame);
@@ -373,39 +218,3 @@ function main() {
 
 // Run the main functions of the page
 main();
-
-// class Animal {
-//     type;
-//     image;
-//     id;
-//     element;
-//     constructor( type, id ) {
-//         this.type = type;
-//         this.id = id;
-//         // Based on the type - set an image
-//         if ( type === 'cat' )
-//             this.image = 'cat'; 
-//         // Add the an image to the page
-//         this.element = document.createElement('image');
-//         // Add to parent
-//         document.querySelector('.farms').appendChild( this.element );
-//         this.element.setAttribute( 'id', id );
-//         this.element.setAttribute('src', this.image + ".png"); 
-//     }
-//     setPosition( left, top ) {
-//         document.querySelector(this.id).style.left = left;
-//         document.querySelector(this.id).style.top = top;
-//     }
-//     remove() {
-//         document.removeChild(this.element);
-//     }
-// }
-// var cat = new Animal('cat', 'cat1');
-// var cat2 = new Animal('cat', 'cat2');
-// var cats = [];
-// cats.push( cat );
-// cats.push( cat2 );
-// cats.push( 3 );
-// // Cleanup
-// for ( var i = 0; i < cats.length; i++ )
-//     cats[i].remove();
