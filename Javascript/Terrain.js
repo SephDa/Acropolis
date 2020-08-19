@@ -8,6 +8,22 @@ class Terrain {
         window.alert("Nothing has been planted here, yet! Better get cracking!");
     }
 
+    getAmountOfTiles(value) {
+        var difficulty = value;
+        //Create amount of tiles value based on difficulty level
+        switch (difficulty) {
+            case "easy":
+                amntTiles = 10;
+                break;
+            case "medium":
+                amntTiles = 20;
+                break;
+            case "hard":
+                amntTiles = 30;
+                break;
+        }
+    }
+
     /**Generate the number of divs based on the difficulty value provided by user in input*/
     generateTiles(value) {
         var parent = document.getElementById('farms');
@@ -40,9 +56,7 @@ class Terrain {
                 farmPlot.addEventListener('click', this.onFarmClick);
             }
         }
-    }
-
-    
+    }  
 
     deleteFarmsDivs() {
         var parent = document.getElementById('farms');
@@ -54,9 +68,5 @@ class Terrain {
                 parent.removeChild(children[i]);
             }
         }
-    
-        //Remove Avatar child div from parent Farms div
-        var avatarChild = document.getElementById("avatar"+selection);
-        parent.removeChild(avatarChild);
     }
 }

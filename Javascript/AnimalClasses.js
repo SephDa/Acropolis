@@ -3,6 +3,7 @@ class Animal {
     speed;
     sound;
     img;
+    class;
 
     constructor (id, speed, sound) {
         this.id = id;
@@ -40,7 +41,22 @@ class Animal {
         childDiv.style.position = "absolute";
         childDiv.style.left="300px";
         childDiv.style.top="600px";
+
+        //Give an ID and class to the animal
         childDiv.id = this.id;
+        childDiv.classList.add("animal");
+    }
+
+    clearAnimals() {
+        var parent = document.getElementById('farms');
+        var animals = document.querySelectorAll('.animal');
+        
+        // Remove Child farmplot divs from parent Farms div
+        for (var i = 0; i < animals.length; i++) {
+            if (animals[i].classList.contains("animal")) {
+                parent.removeChild(animals[i]);
+            }
+        }
     }
 }
 

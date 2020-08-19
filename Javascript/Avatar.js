@@ -1,4 +1,4 @@
-/** Avatar is used for managing the avatar divs of the game, once the player starts the game */
+/** Avatar is used for managing the avatar divs of the game, both before and during game play*/
 class Avatar {
 
     constructor() {
@@ -91,7 +91,15 @@ class Avatar {
             avatar.style.left = avLeft+"px";
                 }
             }   
-        }
+    }
+    /*
+    /**Remove Avatar child div from parent Farms div*/
+    deleteAvatarDiv() {
+        var parent = document.getElementById('farms');
+
+        var avatarChild = document.getElementById("avatar"+selection);
+        parent.removeChild(avatarChild);
+    }
 
     clearAvatars() {
         var avatars = document.querySelectorAll('.avatar');
