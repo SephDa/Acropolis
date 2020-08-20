@@ -56,7 +56,7 @@ class Avatar {
         
         var key = event.keyCode;
 
-        var tiles = amntTiles*100;
+        var tiles = tiler.numtiles*100;
 
 
         if (key == 87) {

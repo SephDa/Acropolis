@@ -2,37 +2,38 @@
 class Terrain {
     
     constructor() {
+        this.numtiles=0;
     }
 
     onFarmClick() {
         window.alert("Nothing has been planted here, yet! Better get cracking!");
     }
 
-    getAmountOfTiles(value) {
-        var difficulty = value;
+    getAmountOfTiles(difficulty) {
+        
         //Create amount of tiles value based on difficulty level
         switch (difficulty) {
             case "easy":
-                amntTiles = 10;
+                this.numtiles = 10;
                 break;
             case "medium":
-                amntTiles = 20;
+                this.numtiles = 20;
                 break;
             case "hard":
-                amntTiles = 30;
+                this.numtiles = 30;
                 break;
         }
     }
 
     /**Generate the number of divs based on the difficulty value provided by user in input*/
-    generateTiles(value) {
+    generateTiles() {
         var parent = document.getElementById('farms');
-        parent.style.width = (value * TILE_SIZE) + "px";
-        parent.style.height = (value * TILE_SIZE) + "px";
+        parent.style.width = (this.numtiles * TILE_SIZE) + "px";
+        parent.style.height = (this.numtiles * TILE_SIZE) + "px";
         parent.style.margin = "auto";
     
-        for (var i = 0; i < value; i++) {
-            for (var j =0; j < value; j++) {
+        for (var i = 0; i < this.numtiles; i++) {
+            for (var j =0; j < this.numtiles; j++) {
                 var farmPlot = document.createElement('div');
     
                 //Set width and height of farm plots
