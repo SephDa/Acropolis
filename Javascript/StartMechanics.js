@@ -3,33 +3,6 @@ class StartMechanics {
     constructor() {
 
     }
-
-    check() {
-        //Get the username
-        var userName = document.getElementById("inputName");
-        var name = userName.value;
-
-        //Check if user has entered a name
-        while (name ===""){
-            window.alert("You must enter a user name!");
-            break;
-        }
-
-        //Check User has selected an avatar:
-        while (selection===0) {
-            window.alert("You need to select an avatar before proceeding!")
-            break;
-        }
-
-        //Get difficulty type
-        var difficulty = document.getElementById('difficulty').value;
-
-        //Check if user has selected difficulty
-        while (difficulty === "initial") {
-            window.alert("You need to choose your difficulty.");
-            break;
-        }
-    }
     
     // Add user typed in name to welcome message
     addName() {

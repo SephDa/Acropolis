@@ -11,7 +11,30 @@ var toggle = new Display();
 function startGame() {
 
     //Check the User has entered a name, selected difficulty and selected an avatar
-    startMechs.check();
+    //Get the username
+    var userName = document.getElementById("inputName");
+    var name = userName.value;
+
+    //Check if user has entered a name
+    if (name ===""){
+        window.alert("You must enter a user name!");
+        return;
+    }
+
+    //Check User has selected an avatar:
+    if (selection===0) {
+        window.alert("You need to select an avatar before proceeding!")
+        return;
+    }
+
+    //Get difficulty type
+    var difficulty = document.getElementById('difficulty').value;
+
+    //Check if user has selected difficulty
+    if (difficulty === "initial") {
+        window.alert("You need to choose your difficulty.");
+        return;
+    }
         
     //Toggle Welcome Menu
     toggle.toggleMenu(); 
@@ -38,7 +61,7 @@ function startGame() {
     avatar.placeAvatar();
 
     //Places the animal onto the page
-    spot.addToPage('farms');
+    //spot.addToPage('farms');
     
     //Enables key movement of avatar on page
     document.onkeydown= avatar.moveAvatar;   
@@ -68,6 +91,7 @@ function clearAll() {
     //Clear the avatars
     avatar.clearAvatars();   
 
+    //Reutrn to the start menu
     toggle.toggleBackMenu();
 
     //Turn off onkeydown functionality

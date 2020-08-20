@@ -1,13 +1,10 @@
 class Animal { 
     id;
-    speed;
     sound;
     img;
-    class;
 
-    constructor (id, speed, sound) {
+    constructor (id, sound) {
         this.id = id;
-        this.speed=speed;
         this.sound=sound;
     }
 
@@ -60,47 +57,6 @@ class Animal {
     }
 }
 
-class Horse extends Animal {
-    constructor(id, speed, sound, colour, img) {
-        super(id, speed, sound, img);
-        this.colour = colour;
-        
-        switch(colour) {
-            case "brown":
-                this.img = "Images/Animals/"+this.colour+"horse.png";
-                break;
-            case "black":
-                this.img="Images/Animals/"+this.colour+"horse.png";
-
-        }       
-    }
-}
-
-class Dog extends Animal {
-    constructor(id, speed, personality) {
-        super(id, speed, "bark bark bark");
-        this.personality = personality;
-
-        switch(personality) {
-            case "friendly":
-                this.img = "Images/Animals/"+this.personality+"dog.png";
-                this.img.style.height= "200px";
-                this.img.style.width="200px"
-
-                break;
-            case "tired":
-                this.img = "Images/Animals/"+this.personality+"dog.png";
-        }
-    }
-}
-
-class Pig extends Animal {
-    constructor(id, speed, sound,size) {
-        super(id,speed,sound, size);
-        this.size = size;
-    }
-}
-
 class Bunny extends Animal {
     constructor(id, speed, sound) {
         super(id, speed, sound);
@@ -109,19 +65,4 @@ class Bunny extends Animal {
     hop() {
         console.log("This is "+this.id+" hopping.")
     }
-
 }
-
-
-var nikki = new Horse("horse1", 2, "neigh!", "black");
-nikki.makeSound();
-
-var spot = new Dog ("dog1", 6, "tired");
-spot.makeSound();
-
-var babe = new Pig("pig1", 3, "oink!", "large");
-babe.makeSound()
-
-var heff = new Bunny("bun1", 10, "ftftftft")
-heff.makeSound();
-heff.hop();
