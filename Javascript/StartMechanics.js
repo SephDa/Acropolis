@@ -1,5 +1,4 @@
 /**StartMechanics is used for managing mechanics associated with choices at the start of the game*/
-
 class StartMechanics {
   constructor() {}
 
@@ -107,5 +106,13 @@ class StartMechanics {
         sleep.style.width = "50%";
         break;
     }
+  }
+
+  delete() {
+    //Clear Name
+    document.getElementById("inputName").value = "";
+
+    //Clear difficulty
+    document.getElementById("difficulty").value = "initial";
   }
 }

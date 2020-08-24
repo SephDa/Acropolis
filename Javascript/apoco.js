@@ -1,6 +1,5 @@
 const TILE_SIZE = 100;
 var selection = 0;
-
 var gameTime = new GameTime(10000);
 var tiler = new Terrain();
 var avatar = new Avatar();
@@ -9,6 +8,7 @@ var toggle = new Display();
 
 // Functions which start the whole agme
 function startGame() {
+  //Check if user has chosen and submitted start up required fields
   var wasSuccessful = startMechs.validate();
   if (!wasSuccessful) {
     return;
@@ -26,7 +26,7 @@ function startGame() {
   //Allocate Stats based on difficulty
   startMechs.allocateResources();
 
-  //Create amount of tiles value based on difficulty level
+  //Get amount of tiles value based on difficulty level
   var difficulty = startMechs.getDifficulty();
   tiler.getAmountOfTiles(difficulty);
 
@@ -48,24 +48,13 @@ function clearAll() {
   // Stop all time related functions
   gameTime.stop();
 
-  // Set timer divs to 00
-  document.getElementById("daysnumber").textContent = "00";
-  document.getElementById("hoursnumber").textContent = "00";
-
-  //Clear Name
-  document.getElementById("inputName").value = "";
-
-  //Clear difficulty
-  document.getElementById("difficulty").value = "initial";
+  startMechs.delete();
 
   //Delete the child divs
   tiler.deleteFarmsDivs();
 
-  //Clear the avatars
-  avatar.clearAvatars();
-
-  //Delete the Avatar Div on top of the farmplots
-  avatar.deleteAvatarDiv();
+  //Clear Player Avatar
+  avatar.destroy();
 
   //Reutrn to the start menu
   toggle.toggleBackMenu();
