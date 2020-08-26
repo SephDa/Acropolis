@@ -2,7 +2,7 @@
 class Avatar {
   constructor() {}
 
-  avatarSelect() {
+  select() {
     var avatars = document.querySelectorAll(".avatar");
     for (var i = 0; i < avatars.length; i++) {
       avatars[i].addEventListener("click", function () {
@@ -16,7 +16,7 @@ class Avatar {
   }
 
   /**Place chosen avatar; which is chosen from the start menu*/
-  placeAvatar() {
+  place() {
     //Get the Parent Div
     var parent = document.getElementById("farms");
 
@@ -45,7 +45,7 @@ class Avatar {
   }
 
   /** Move the Avatar*/
-  moveAvatar(event) {
+  move(event) {
     var avatar = document.getElementById("avatar" + selection);
     var avTop = parseInt(avatar.style.top, 10);
     var avLeft = parseInt(avatar.style.left, 10);

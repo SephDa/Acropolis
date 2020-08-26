@@ -1,23 +1,21 @@
 /** Game Time is used for managing the overall time of the game, once the player starts the game */
-class GameTime {
-  hungtimer;
+class GameTime extends System {
   hrtimer;
   daytimer;
 
   constructor(hourlyMs) {
+    super();
     this.hourlyMs = hourlyMs;
   }
 
   /**Function which starts all time related functions and allocates their milliseconds*/
-  start() {
-    this.hungtimer = setInterval(this.depleteHunger, 60000);
+  init() {
     this.hrtimer = setInterval(this.hourTime, this.hourlyMs);
     this.daytimer = setInterval(this.dayTime, 240000);
   }
 
   /**Function which stops all time related functions*/
-  stop() {
-    clearInterval(this.hungtimer);
+  destroy() {
     clearInterval(this.hrtimer);
     clearInterval(this.daytimer);
     document.getElementById("daysnumber").textContent = "00";
@@ -25,26 +23,6 @@ class GameTime {
   }
 
   /**Time related Functions
-    Function that depletes hunger over set period of time */
-  depleteHunger() {
-    var hungerText = document.getElementById("hungerStatPercentage");
-    var hunger = parseInt(hungerText.textContent, 10);
-
-    var hungerBar = document.getElementById("hungerStatProgress");
-
-    var damage = 5;
-
-    if (hunger > 0) {
-      hunger = hunger - damage;
-      hunger = hunger.toString();
-
-      hungerText.textContent = hunger;
-      hungerBar.style.width = hunger + "%";
-    } else {
-      alert("You have starved to death!");
-      clearAll();
-    }
-  }
 
   /**Function that makes hour go up*/
   hourTime() {

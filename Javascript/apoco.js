@@ -5,6 +5,9 @@ var tiler = new Terrain();
 var avatar = new Avatar();
 var startMechs = new StartMechanics();
 var toggle = new Display();
+var statsManager = new StatsManager();
+var bunnyMngr = new BunnyManager();
+var gameSystems = [gameTime, tiler, statsManager, bunnyMngr];
 
 // Functions which start the whole agme
 function startGame() {
@@ -15,7 +18,7 @@ function startGame() {
   }
 
   //Toggle Welcome Menu
-  toggle.toggleMenu();
+  toggle.gameAppear();
 
   //Add User entered name to the welcome note
   startMechs.addName();
@@ -27,37 +30,31 @@ function startGame() {
   startMechs.allocateResources();
 
   //Get amount of tiles value based on difficulty level
-  var difficulty = startMechs.getDifficulty();
-  tiler.getAmountOfTiles(difficulty);
+  tiler.getAmountOfTiles();
 
-  //Generate the number of divs based on the value above
-  tiler.generateTiles();
-
-  //Starts Gametime
-  gameTime.start();
-
+  for (var i = 0; i < gameSystems.length; i++) {
+    gameSystems[i].init();
+  }
   //Places the selected Avatar onto the page
-  avatar.placeAvatar();
+  avatar.place();
 
   //Enables key movement of avatar on page
-  document.onkeydown = avatar.moveAvatar;
+  document.onkeydown = avatar.move;
 }
 
 //Clear the Gamedata
 function clearAll() {
-  // Stop all time related functions
-  gameTime.stop();
+  for (var i = 0; i < gameSystems.length; i++) {
+    gameSystems[i].destroy();
+  }
 
   startMechs.delete();
-
-  //Delete the child divs
-  tiler.deleteFarmsDivs();
 
   //Clear Player Avatar
   avatar.destroy();
 
   //Reutrn to the start menu
-  toggle.toggleBackMenu();
+  toggle.gameDisappear();
 
   //Turn off onkeydown functionality
   document.onkeydown = null;
@@ -66,7 +63,7 @@ function clearAll() {
 //Run all the main functions
 function main() {
   //Player selects the avatar
-  avatar.avatarSelect();
+  avatar.select();
 
   //Click New Game to initialise game
   document.getElementById("brandNewGame").addEventListener("click", startGame);
