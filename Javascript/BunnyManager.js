@@ -2,9 +2,8 @@
 class BunnyManager extends System {
   constructor() {
     super();
-    //this is where the array is kept
-    this.numberOfBunnies = 0;
     this.bunnies = [];
+    this.add = this.add.bind(this);
   }
 
   /**Create a bunny*/
@@ -13,32 +12,38 @@ class BunnyManager extends System {
     //based on the user difficulty,create a certainnumber of bunnies
     switch (difficulty) {
       case "easy":
-        this.numberOfBunnies = 5;
+        this.numOfBunnies = 5;
+        this.ms = 5000;
         break;
       case "medium":
-        this.numberOfBunnies = 10;
+        this.numOfBunnies = 6;
+        this.ms = 2000;
         break;
       case "hard":
-        this.numberOfBunnies = 15;
+        this.numOfBunnies = 7;
+        this.ms = 1000;
         break;
     }
-    for (var i = 0; i < this.numberOfBunnies; i++) {
+    this.bunnytimer = setInterval(this.add, this.ms);
+  }
+  /**Make the bunny appear on page, in a random location*/
+  add() {
+    //while (this.bunnies.length < this.numOfBunnies) {
+    //for (var i = 0; i < 1; i++) {
+    if (this.bunnies.length < this.numOfBunnies) {
       var x = new Bunny();
       x.addToPage("farms");
       this.bunnies.push(x);
     }
-
-    console.log(this.bunnies);
-  }
-
-  /**Make the bunny appear on page, in a random location*/
-  insertBunny() {
-    //already a method from super class
+    //this.bunnies[i].id = "Bunny" + (i + 1);
+    //break;
+    // }
+    //}
   }
 
   /**Set an interval timer for bunny appearing on page */
   bunniesAppearEvery(secs) {}
-
+  //
   giveID() {}
 
   destroy() {}

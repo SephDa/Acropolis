@@ -24,10 +24,24 @@ class Animal {
 
     //Position the newly created child div
     childDiv.style.position = "absolute";
-    childDiv.style.left = "300px";
-    childDiv.style.top = "600px";
 
-    //Give an ID and class to the animal
+    var difficulty = startMechs.getDifficulty();
+    switch (difficulty) {
+      case "easy":
+        childDiv.style.left = Math.floor(Math.random() * 9) + 1 + "00px";
+        childDiv.style.top = Math.floor(Math.random() * 9) + 1 + "00px";
+        break;
+      case "medium":
+        childDiv.style.left = Math.floor(Math.random() * 19) + 1 + "00px";
+        childDiv.style.top = Math.floor(Math.random() * 19) + 1 + "00px";
+        break;
+      case "hard":
+        childDiv.style.left = Math.floor(Math.random() * 29) + 1 + "00px";
+        childDiv.style.top = Math.floor(Math.random() * 29) + 1 + "00px";
+        break;
+    }
+
+    //Give a class to the animal
     childDiv.classList.add("animal");
   }
 

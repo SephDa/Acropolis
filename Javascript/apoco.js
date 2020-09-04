@@ -1,6 +1,6 @@
 const TILE_SIZE = 100;
 var selection = 0;
-var gameTime = new GameTime(10000);
+var gameTime = new GameTime(1000);
 var tiler = new Terrain();
 var avatar = new Avatar();
 var startMechs = new StartMechanics();
