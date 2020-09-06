@@ -16,8 +16,8 @@ class Animal {
 
     //Use the input ID of the avatar the user selected to find the src for the img
     animalImage.setAttribute("src", "Images/Animals/" + this.img + ".png");
-    animalImage.style.height = "200px";
-    animalImage.style.width = "200px";
+    animalImage.style.height = "50px";
+    animalImage.style.width = "50px";
 
     //Append the img to the newly created child div
     childDiv.appendChild(animalImage);

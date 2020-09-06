@@ -11,7 +11,7 @@ class GameTime extends System {
   /**Function which starts all time related functions and allocates their milliseconds*/
   init() {
     this.hrtimer = setInterval(this.hourTime, this.hourlyMs);
-    this.daytimer = setInterval(this.dayTime, 240000);
+    this.daytimer = setInterval(this.dayTime, 24000);
   }
 
   /**Function which stops all time related functions*/

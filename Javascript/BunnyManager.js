@@ -16,20 +16,18 @@ class BunnyManager extends System {
         this.ms = 5000;
         break;
       case "medium":
-        this.numOfBunnies = 6;
+        this.numOfBunnies = 10;
         this.ms = 2000;
         break;
       case "hard":
-        this.numOfBunnies = 7;
+        this.numOfBunnies = 100;
         this.ms = 1000;
         break;
     }
     this.bunnytimer = setInterval(this.add, this.ms);
   }
-  /**Make the bunny appear on page, in a random location*/
+  /**Make the bunny appear on page*/
   add() {
-    //while (this.bunnies.length < this.numOfBunnies) {
-    //for (var i = 0; i < 1; i++) {
     if (this.bunnies.length < this.numOfBunnies) {
       var x = new Bunny();
       x.addToPage("farms");
@@ -37,13 +35,9 @@ class BunnyManager extends System {
     }
     //this.bunnies[i].id = "Bunny" + (i + 1);
     //break;
-    // }
-    //}
-  }
 
-  /**Set an interval timer for bunny appearing on page */
-  bunniesAppearEvery(secs) {}
-  //
+  }
+  
   giveID() {}
 
   destroy() {}
