@@ -1,5 +1,7 @@
 /**This is a class manager, which instantiates and manages all bunnies in the game */
 class BunnyManager extends System {
+  bunnytimer;
+
   constructor() {
     super();
     this.bunnies = [];
@@ -32,20 +34,37 @@ class BunnyManager extends System {
       var x = new Bunny();
       x.addToPage("farms");
       this.bunnies.push(x);
+      var index = this.bunnies.indexOf(x);
+      x.setID("Bunny" + index);
     }
-    //this.bunnies[i].id = "Bunny" + (i + 1);
-    //break;
-
+    var animals = document.querySelectorAll(".animal");
+    for (var i = 0; i < animals.length; i++) {
+      animals[i].id = "Bunny" + i;
+    }
   }
-  
-  giveID() {}
 
-  destroy() {}
+  destroy() {
+    clearInterval(this.bunnytimer);
+
+    for (var i = 0; i <= this.numOfBunnies; i++) {
+      this.bunnies.pop();
+    }
+
+    var parent = document.getElementById("farms");
+    var animals = document.querySelectorAll(".animal");
+
+    // Remove Child farmplot divs from parent Farms div
+    for (var i = 0; i < animals.length; i++) {
+      if (animals[i].classList.contains("animal")) {
+        parent.removeChild(animals[i]);
+      }
+    }
+  }
 }
 
-//add timer, new bunnies added to array after x seconds or mins
+//add timer, new bunnies added to array after x seconds or mins - DONE
 // manage life of bunnies
 //each bunny needs a lifespan value - once at 0 they are removed - every second or so their life value goes down
 // bunnies move - maybe in animal class
-//interval timer
-// rethink difficulty - maybe it's to do with rate of adding bunnies to the game
+//interval timer - DONE
+// rethink difficulty - maybe it's to do with rate of adding bunnies to the game- DONE
