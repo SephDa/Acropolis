@@ -1,15 +1,23 @@
 class Animal {
-  constructor() {}
+  constructor() {
+    this.element = null;
+    this.id = null;
+  }
+
+  setID(id) {
+    this.id = id;
+    this.element.setAttribute("id", id);
+  }
 
   addToPage(parentID) {
     //Get the Parent Div
     var parent = document.getElementById(parentID);
 
     //Create the child div
-    var childDiv = document.createElement("div");
+    this.element = document.createElement("div");
 
     //Append the child to the parent div (add it in!)
-    parent.appendChild(childDiv);
+    parent.appendChild(this.element);
 
     //Create an image element
     var animalImage = document.createElement("img");
@@ -20,40 +28,44 @@ class Animal {
     animalImage.style.width = "50px";
 
     //Append the img to the newly created child div
-    childDiv.appendChild(animalImage);
+    this.element.appendChild(animalImage);
 
     //Position the newly created child div
-    childDiv.style.position = "absolute";
+    this.element.style.position = "absolute";
 
     var difficulty = startMechs.getDifficulty();
     switch (difficulty) {
       case "easy":
-        childDiv.style.left = Math.floor(Math.random() * 9) + 1 + "00px";
-        childDiv.style.top = Math.floor(Math.random() * 9) + 1 + "00px";
+        this.element.style.left = Math.floor(Math.random() * 9) + 1 + "00px";
+        this.element.style.top = Math.floor(Math.random() * 9) + 1 + "00px";
         break;
       case "medium":
-        childDiv.style.left = Math.floor(Math.random() * 19) + 1 + "00px";
-        childDiv.style.top = Math.floor(Math.random() * 19) + 1 + "00px";
+        this.element.style.left = Math.floor(Math.random() * 19) + 1 + "00px";
+        this.element.style.top = Math.floor(Math.random() * 19) + 1 + "00px";
         break;
       case "hard":
-        childDiv.style.left = Math.floor(Math.random() * 29) + 1 + "00px";
-        childDiv.style.top = Math.floor(Math.random() * 29) + 1 + "00px";
+        this.element.style.left = Math.floor(Math.random() * 29) + 1 + "00px";
+        this.element.style.top = Math.floor(Math.random() * 29) + 1 + "00px";
         break;
     }
 
     //Give a class to the animal
-    childDiv.classList.add("animal");
+    this.element.classList.add("animal");
   }
 
-  clearAnimals() {
-    var parent = document.getElementById("farms");
-    var animals = document.querySelectorAll(".animal");
-
-    // Remove Child farmplot divs from parent Farms div
-    for (var i = 0; i < animals.length; i++) {
-      if (animals[i].classList.contains("animal")) {
-        parent.removeChild(animals[i]);
-      }
-    }
+  destroy() {
+    this.element.remove();
   }
+
+  // clearAnimals() {
+  //   var parent = document.getElementById("farms");
+  //   var animals = document.querySelectorAll(".animal");
+
+  //   // Remove Child farmplot divs from parent Farms div
+  //   for (var i = 0; i < animals.length; i++) {
+  //     if (animals[i].classList.contains("animal")) {
+  //       parent.removeChild(animals[i]);
+  //     }
+  //   }
+  // }
 }

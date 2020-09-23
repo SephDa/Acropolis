@@ -5,7 +5,6 @@ class BunnyManager extends System {
   constructor() {
     super();
     this.bunnies = [];
-    this.add = this.add.bind(this);
   }
 
   /**Create a bunny*/
@@ -26,7 +25,9 @@ class BunnyManager extends System {
         this.ms = 1000;
         break;
     }
-    this.bunnytimer = setInterval(this.add, this.ms);
+    this.bunnytimer = setInterval(() => {
+      this.add();
+    }, this.ms);
   }
   /**Make the bunny appear on page*/
   add() {
@@ -37,28 +38,38 @@ class BunnyManager extends System {
       var index = this.bunnies.indexOf(x);
       x.setID("Bunny" + index);
     }
-    var animals = document.querySelectorAll(".animal");
-    for (var i = 0; i < animals.length; i++) {
-      animals[i].id = "Bunny" + i;
+    // var animals = document.querySelectorAll(".animal");
+    // for (var i = 0; i < animals.length; i++) {
+    //   animals[i].id = "Bunny" + i;
+    // }
+  }
+
+  onGameTick() {
+    for (var i = 0; i <= this.numOfBunnies; i++) {
+      this.bunnies[i].age();
+      if (this.bunnies[i].lifespan === 0) {
+      }
     }
   }
 
   destroy() {
     clearInterval(this.bunnytimer);
 
-    for (var i = 0; i <= this.numOfBunnies; i++) {
-      this.bunnies.pop();
+    for (var i = 0; i <= this.bunnies.length; i++) {
+      this.bunnies[i].destroy();
     }
 
-    var parent = document.getElementById("farms");
-    var animals = document.querySelectorAll(".animal");
+    this.bunnies = [];
 
-    // Remove Child farmplot divs from parent Farms div
-    for (var i = 0; i < animals.length; i++) {
-      if (animals[i].classList.contains("animal")) {
-        parent.removeChild(animals[i]);
-      }
-    }
+    // var parent = document.getElementById("farms");
+    // var animals = document.querySelectorAll(".animal");
+
+    // // Remove Child farmplot divs from parent Farms div
+    // for (var i = 0; i < animals.length; i++) {
+    //   if (animals[i].classList.contains("animal")) {
+    //     parent.removeChild(animals[i]);
+    //   }
+    // }
   }
 }
 

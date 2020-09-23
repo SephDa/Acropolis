@@ -5,5 +5,4 @@ class Bunny extends Animal {
     this.img = "bunny";
     this.lifespan = 5;
   }
-  setID(id) {}
 }
