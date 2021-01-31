@@ -10,7 +10,7 @@ class BunnyManager extends System {
   /**Create a bunny*/
   init() {
     var difficulty = startMechs.getDifficulty();
-    //based on the user difficulty,create a certainnumber of bunnies
+    //based on the user difficulty,create a certain number of bunnies
     switch (difficulty) {
       case "easy":
         this.numOfBunnies = 5;
@@ -28,15 +28,19 @@ class BunnyManager extends System {
     this.bunnytimer = setInterval(() => {
       this.add();
     }, this.ms);
+
+
+
   }
   /**Make the bunny appear on page*/
   add() {
     if (this.bunnies.length < this.numOfBunnies) {
-      var x = new Bunny();
-      x.addToPage("farms");
-      this.bunnies.push(x);
-      var index = this.bunnies.indexOf(x);
-      x.setID("Bunny" + index);
+      var bunny = new Bunny();
+      bunny.addToPage("farms");
+      this.bunnies.push(bunny);
+      var index = this.bunnies.indexOf(bunny);
+      bunny.setID("Bunny" + index);
+      bunny.init();
     }
     // var animals = document.querySelectorAll(".animal");
     // for (var i = 0; i < animals.length; i++) {
@@ -44,32 +48,32 @@ class BunnyManager extends System {
     // }
   }
 
-  onGameTick() {
-    for (var i = 0; i <= this.numOfBunnies; i++) {
-      this.bunnies[i].age();
-      if (this.bunnies[i].lifespan === 0) {
-      }
-    }
-  }
+  //onGameTick() {
+    //for (var i = 0; i <= this.numOfBunnies; i++) {
+      //this.bunnies[i].age();
+      //if (this.bunnies[i].lifespan === 0) {
+    //  }
+  //  }
+  //}
 
   destroy() {
     clearInterval(this.bunnytimer);
 
-    for (var i = 0; i <= this.bunnies.length; i++) {
-      this.bunnies[i].destroy();
-    }
+    //for (var i = 0; i <= this.bunnies.length; i++) {
+    //  this.bunnies[i].destroy();
+    //}
 
-    this.bunnies = [];
+    //this.bunnies = [];
 
-    // var parent = document.getElementById("farms");
-    // var animals = document.querySelectorAll(".animal");
+    var parent = document.getElementById("farms");
+    var animals = document.querySelectorAll(".animal");
 
-    // // Remove Child farmplot divs from parent Farms div
-    // for (var i = 0; i < animals.length; i++) {
-    //   if (animals[i].classList.contains("animal")) {
-    //     parent.removeChild(animals[i]);
-    //   }
-    // }
+    //Remove Child animal divs from parent Farms div
+    for (var i = 0; i < animals.length; i++) {
+       if (animals[i].classList.contains("animal")) {
+         parent.removeChild(animals[i]);
+       }
+     }
   }
 }
 
