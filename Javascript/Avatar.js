@@ -54,6 +54,7 @@ class Avatar {
 
     var tiles = tiler.numtiles * 100;
 
+    //Up
     if (key == 87) {
       avTop = avTop - 100;
       if (avTop < 0) {
@@ -61,6 +62,8 @@ class Avatar {
       } else {
         avatar.style.top = avTop + "px";
       }
+
+      // Down
     } else if (key == 83) {
       avTop = avTop + 100;
       if (avTop > tiles - 100) {
@@ -68,6 +71,8 @@ class Avatar {
       } else {
         avatar.style.top = avTop + "px";
       }
+
+      //Right
     } else if (key == 68) {
       avLeft = avLeft + 100;
       if (avLeft > tiles - 100) {
@@ -77,6 +82,8 @@ class Avatar {
       } else {
         avatar.style.left = avLeft + "px";
       }
+      
+      //Left
     } else if (key == 65) {
       avLeft = avLeft - 100;
       if (avLeft < 0) {

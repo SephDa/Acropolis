@@ -19,17 +19,18 @@ class Animal {
     //Append the child to the parent div (add it in!)
     parent.appendChild(this.element);
 
+    /*
     //Create an image element
     var animalImage = document.createElement("img");
 
-    //Use the input ID of the avatar the user selected to find the src for the img
-    animalImage.setAttribute("src", "Images/Animals/" + this.img + ".png");
-    animalImage.style.height = "50px";
-    animalImage.style.width = "50px";
+    //Use the sub class (e.g. Bunny) image name to find the image
+    animalImage.setAttribute("src", "Images/Animals/" + this.img + ".jpg");
+    //animalImage.style.height = "50px";
+    //animalImage.style.width = "50px";
 
     //Append the img to the newly created child div
     this.element.appendChild(animalImage);
-
+*/
     //Position the newly created child div
     this.element.style.position = "absolute";
 
@@ -46,7 +47,7 @@ class Animal {
       case "hard":
         this.element.style.left = Math.floor(Math.random() * 29) + 1 + "00px";
         this.element.style.top = Math.floor(Math.random() * 29) + 1 + "00px";
-        break;
+        break; 
     }
 
     //Give a class to the animal
@@ -66,7 +67,7 @@ class Animal {
     //based on the user difficulty,create a certainnumber of bunnies
     switch (difficulty) {
       case "easy":
-        this.ms = 5000;
+        this.ms = 10000;
         break;
       case "medium":
         this.ms = 2000;
@@ -81,15 +82,19 @@ class Animal {
   }
 
   move(){
+    var tiles = tiler.numtiles * 100;
     var animal = this.element;
+
       var animalTop = parseInt(animal.style.top, 10);
       var animalLeft = parseInt(animal.style.left, 10);
 
+      // Move animal DOWN
       animalTop = animalTop + 100;
-      animals[i].style.top = animalLeft + "px"
+      animal.style.top = animalTop + "px";
 
-      animalLeft = animalLeft +100;
-      animals[i].style.left = animalLeft + "px"  
+      // Move animal RIGHT
+      animalLeft = animalLeft + 100;
+      animal.style.left = animalLeft + "px"; 
   }
 
 

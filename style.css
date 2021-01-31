@@ -440,3 +440,9 @@ a:visited {
   #socials {
       text-align: right;
   }
+
+  .animal {
+      height: 238px;
+      width: 100px;
+      background: url(./Images/Animals/bunny.png)
+  }

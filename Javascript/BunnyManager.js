@@ -28,10 +28,8 @@ class BunnyManager extends System {
     this.bunnytimer = setInterval(() => {
       this.add();
     }, this.ms);
-
-
-
   }
+
   /**Make the bunny appear on page*/
   add() {
     if (this.bunnies.length < this.numOfBunnies) {
@@ -42,10 +40,7 @@ class BunnyManager extends System {
       bunny.setID("Bunny" + index);
       bunny.init();
     }
-    // var animals = document.querySelectorAll(".animal");
-    // for (var i = 0; i < animals.length; i++) {
-    //   animals[i].id = "Bunny" + i;
-    // }
+
   }
 
   //onGameTick() {
